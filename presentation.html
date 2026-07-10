@@ -1557,110 +1557,152 @@
         /* ===========================================
            SLIDE 16: OMNICHANNEL FLOWCHART STYLING
            =========================================== */
-        .journey-flowchart-wrapper {
-            position: relative;
-            width: 540px;
-            height: 680px;
-            margin: 0 auto;
-            border: 2px dashed rgba(0,0,0,0.06);
-            border-radius: 20px;
-            background: rgba(0,0,0,0.01);
-            overflow: visible;
-            box-sizing: border-box;
-        }
-        .flow-svg {
-            position: absolute;
-            inset: 0;
+        /* ===========================================
+           SLIDE 16: D2C CUSTOMER JOURNEY SIMULATION STYLING
+           =========================================== */
+        .journey-sim-container {
+            display: grid;
+            grid-template-columns: 420px 1fr;
+            gap: 40px;
             width: 100%;
             height: 100%;
-            z-index: 1;
-            overflow: visible;
+            align-items: stretch;
+            box-sizing: border-box;
         }
-        .flow-line {
-            animation: flowDash 6s linear infinite;
+        .journey-steps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            justify-content: center;
         }
-        .flow-node {
-            position: absolute;
+        .journey-step-btn {
             background: #ffffff;
-            border: 2px solid var(--border-color);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 2;
-            transition: all 0.3s var(--ease-out-expo);
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 16px 20px;
+            text-align: left;
             cursor: pointer;
+            transition: all 0.3s var(--ease-out-expo);
+            position: relative;
+            outline: none;
             box-sizing: border-box;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
-            text-align: center;
-            padding: 10px;
-        }
-        .flow-node.rounded-rect {
-            border-radius: 35px;
-        }
-        .flow-node.rect {
-            border-radius: 12px;
-        }
-        .flow-node.diamond {
-            transform: rotate(45deg);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .flow-node.diamond .diamond-content {
-            transform: rotate(-45deg);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
             width: 100%;
-            height: 100%;
         }
-        .flow-node-title {
-            font-family: var(--font-display);
-            font-size: 15px;
-            font-weight: 800;
-            color: var(--text-dark);
-            line-height: 1.2;
-        }
-        .flow-node-sub {
-            font-family: var(--font-mono);
-            font-size: 10px;
-            color: #888888;
-            font-weight: 700;
-            margin-top: 4px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .flow-node:hover,
-        .flow-node.active {
+        .journey-step-btn:hover {
             border-color: var(--bg-red);
-            box-shadow: 0 10px 25px rgba(255, 51, 0, 0.08);
-            transform: scale(1.03);
+            transform: translateX(5px);
         }
-        .flow-node.diamond:hover,
-        .flow-node.diamond.active {
-            transform: rotate(45deg) scale(1.03);
+        .journey-step-btn.active {
+            background: var(--bg-dark);
+            border-color: var(--bg-dark);
+            color: #ffffff;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
-        .flow-node:hover .flow-node-title,
-        .flow-node.active .flow-node-title {
+        .journey-step-btn.active .step-btn-num {
             color: var(--text-red);
         }
-        .decision-label {
-            position: absolute;
+        .journey-step-btn.active .step-btn-desc {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .step-btn-num {
             font-family: var(--font-mono);
             font-size: 11px;
-            font-weight: 900;
+            font-weight: 800;
             color: #888888;
+            margin-bottom: 4px;
             letter-spacing: 1px;
-            transform: rotate(-45deg);
         }
-        .decision-label.yes-lbl {
-            color: #2e7d32;
+        .step-btn-title {
+            font-family: var(--font-display);
+            font-size: 16px;
+            font-weight: 800;
+            line-height: 1.2;
         }
-        .decision-label.no-lbl {
-            color: var(--text-red);
+        .step-btn-desc {
+            font-size: 13px;
+            color: #666666;
+            margin-top: 6px;
+            line-height: 1.35;
+        }
+        .journey-viewport-mockup {
+            background: #ffffff;
+            border: 2px solid #000000;
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.06);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            height: 520px;
+            position: relative;
+            box-sizing: border-box;
+        }
+        .journey-browser-header {
+            background: #f5f5f5;
+            border-bottom: 2px solid #000000;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-sizing: border-box;
+        }
+        .browser-dots {
+            display: flex;
+            gap: 6px;
+        }
+        .browser-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ccc;
+        }
+        .browser-dot.red { background: #ff5f56; }
+        .browser-dot.yellow { background: #ffbd2e; }
+        .browser-dot.green { background: #27c93f; }
+        .journey-browser-address {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 6px 14px;
+            font-family: var(--font-mono);
+            font-size: 13px;
+            flex: 1;
+            color: #555555;
+            text-align: left;
+        }
+        .journey-viewport-content {
+            flex: 1;
+            position: relative;
+            background: #fafafa;
+        }
+        .journey-sim-screen {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+        .journey-sim-screen.active {
+            opacity: 1;
+            visibility: visible;
+            z-index: 2;
+        }
+        .journey-card-type-btn {
+            transition: all 0.2s ease;
+        }
+        .journey-card-type-btn.active {
+            background: #000000 !important;
+            color: #ffffff !important;
+            border-color: #000000 !important;
+        }
+        @keyframes pulseBtn {
+            0% { box-shadow: 0 0 0 0 rgba(255, 51, 0, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 51, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 51, 0, 0); }
         }
 
         /* ===========================================
@@ -2749,98 +2791,271 @@
 </div>
 <div class="slide-number-top">16</div>
 </div>
-                    <div class="slide-body">
-                        <div class="grid-2col reveal" style="align-items: center; gap: 50px;">
-                            
-                            <!-- Left Column: Omnichannel Flowchart Diagram -->
-                            <div class="journey-flowchart-wrapper">
-                                <svg class="flow-svg" viewBox="0 0 540 680">
-                                    <defs>
-                                        <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                                            <path d="M 0 2 L 8 5 L 0 8 z" fill="#888888" />
-                                        </marker>
-                                    </defs>
-                                    
-                                    <!-- Connection Lines Background -->
-                                    <path d="M 270 100 L 270 205" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="3" />
-                                    <path d="M 270 290 L 270 422" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="3" marker-end="url(#arrow)" />
-                                    <path d="M 380 470 L 440 470 L 440 250 L 388 250" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="3" marker-end="url(#arrow)" />
-                                    <path d="M 160 250 L 100 250 L 100 615 L 152 615" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="3" marker-end="url(#arrow)" />
-                                    
-                                    <!-- Connection Lines Flow animation overlay -->
-                                    <path class="flow-line" d="M 270 100 L 270 205" fill="none" stroke="var(--bg-red)" stroke-width="3" stroke-dasharray="10 15" />
-                                    <path class="flow-line" d="M 270 290 L 270 422" fill="none" stroke="var(--bg-red)" stroke-width="3" stroke-dasharray="10 15" />
-                                    <path class="flow-line" d="M 380 470 L 440 470 L 440 250 L 388 250" fill="none" stroke="var(--bg-red)" stroke-width="3" stroke-dasharray="10 15" />
-                                    <path class="flow-line" d="M 160 250 L 100 250 L 100 615 L 152 615" fill="none" stroke="var(--bg-red)" stroke-width="3" stroke-dasharray="10 15" />
-                                </svg>
-                                
-                                <!-- Node 1: Start (Discovery) -->
-                                <div class="flow-node rounded-rect" id="flow-start" style="left: 160px; top: 30px; width: 220px; height: 70px;">
-                                    <div class="flow-node-title">Start / Ads Lands</div>
-                                    <div class="flow-node-sub">Meta, Google &amp; Email</div>
+                    <div class="slide-body" style="height: calc(100% - 140px); margin-top: 20px;">
+                        <div class="journey-sim-container">
+                            <!-- Left Column: Step Navigation buttons -->
+                            <div class="journey-steps-list">
+                                <!-- Step 1 -->
+                                <div class="journey-step-btn active" data-journey-step="0">
+                                    <div class="step-btn-num">STEP 01 / DISCOVERY</div>
+                                    <div class="step-btn-title">Omnichannel Entry</div>
+                                    <div class="step-btn-desc">High-intent Google searches or seasonal Meta Catalog ads capture user interest.</div>
                                 </div>
-                                
-                                <!-- Node 2: Check (Decision) -->
-                                <div class="flow-node rect" id="flow-check" style="left: 160px; top: 210px; width: 220px; height: 80px;">
-                                    <div class="flow-node-title">Intent Match?</div>
-                                    <div class="flow-node-sub">Gift Fit?</div>
-                                    <!-- Yes/No Labels -->
-                                    <span class="decision-label yes-lbl" style="left: 100px; top: 85px; transform: none;">YES</span>
-                                    <span class="decision-label no-lbl" style="left: -35px; top: 30px; transform: none;">NO</span>
+                                <!-- Step 2 -->
+                                <div class="journey-step-btn" data-journey-step="1">
+                                    <div class="step-btn-num">STEP 02 / INTENT MATCH</div>
+                                    <div class="step-btn-title">D2C Premium Catalog</div>
+                                    <div class="step-btn-desc">User lands on catalog checking verified reviews, pricing tiers, and stock status.</div>
                                 </div>
-                                
-                                <!-- Node 3: Process (Checkout & Personalization) -->
-                                <div class="flow-node rect" id="flow-process" style="left: 160px; top: 430px; width: 220px; height: 80px;">
-                                    <div class="flow-node-title">Customize &amp; Buy</div>
-                                    <div class="flow-node-sub">Greeting card + Checkout</div>
+                                <!-- Step 3 -->
+                                <div class="journey-step-btn" data-journey-step="2">
+                                    <div class="step-btn-num">STEP 03 / PERSONALIZATION</div>
+                                    <div class="step-btn-title">Gift Card Customizer</div>
+                                    <div class="step-btn-desc">User types a custom greeting card message and schedules delivery dates.</div>
                                 </div>
-                                
-                                <!-- Node 4: End (Retargeting Loop) -->
-                                <div class="flow-node rounded-rect" id="flow-end" style="left: 160px; top: 580px; width: 220px; height: 70px;">
-                                    <div class="flow-node-title">Retargeting Ads</div>
-                                    <div class="flow-node-sub">Meta &amp; Google Shopping</div>
+                                <!-- Step 4 -->
+                                <div class="journey-step-btn" data-journey-step="3">
+                                    <div class="step-btn-num">STEP 04 / CONVERSION</div>
+                                    <div class="step-btn-title">SST Checkout API</div>
+                                    <div class="step-btn-desc">Secure checkout sends client and server-side Conversions API signal packets.</div>
+                                </div>
+                                <!-- Step 5 -->
+                                <div class="journey-step-btn" data-journey-step="4">
+                                    <div class="step-btn-num">STEP 05 / RETENTION</div>
+                                    <div class="step-btn-title">Lifecycle Reminders</div>
+                                    <div class="step-btn-desc">Automated anniversary email flows trigger 11 months later to prompt repeat orders.</div>
                                 </div>
                             </div>
-                            
-                            <!-- Right Column: Detail Cards -->
-                            <div class="decay-cards-container" style="justify-content: center; height: 100%;">
-                                <!-- Card 1 -->
-                                <div class="decay-step-card" data-flow-step="start" style="max-height: 190px;">
-                                    <div class="decay-card-header">
-                                        <span class="decay-card-num">STAGE 01 / OMNICHANNEL DISCOVERY</span>
-                                        <h3 class="decay-card-title">Paid Traffic Landings</h3>
-                                    </div>
-                                    <div class="decay-card-body" style="opacity: 1; margin-top: 8px;">
-                                        <p style="margin-bottom: 6px; font-size: 15px;"><strong>Meta Catalog Ads:</strong> Reaching shoppers during high-emotion gifting cycles on Facebook &amp; Instagram.</p>
-                                        <p style="font-size: 15px;"><strong>Google PMax &amp; Shopping:</strong> Capturing active intent keywords (e.g. <em>"Eid premium gift box"</em>).</p>
-                                    </div>
-                                </div>
 
-                                <!-- Card 2 -->
-                                <div class="decay-step-card" data-flow-step="check-process" style="max-height: 190px;">
-                                    <div class="decay-card-header">
-                                        <span class="decay-card-num">STAGE 02 / CONVERSION CLOSING</span>
-                                        <h3 class="decay-card-title">Personalization &amp; Checkout</h3>
+                            <!-- Right Column: Interactive Browser Mockup -->
+                            <div class="journey-viewport-mockup">
+                                <div class="journey-browser-header">
+                                    <div class="browser-dots">
+                                        <div class="browser-dot red"></div>
+                                        <div class="browser-dot yellow"></div>
+                                        <div class="browser-dot green"></div>
                                     </div>
-                                    <div class="decay-card-body" style="opacity: 1; margin-top: 8px;">
-                                        <p style="margin-bottom: 6px; font-size: 15px;"><strong>Intent Match Check:</strong> Shopper filters items and reviews ratings. If they bounce, they go to Stage 3.</p>
-                                        <p style="font-size: 15px;"><strong>Add-on Customizer:</strong> Shopper adds customized card greetings and scheduling triggers before checkout.</p>
-                                    </div>
+                                    <div class="journey-browser-address" id="journeyBrowserUrl">google.com/search?q=premium+eid+gift+box</div>
                                 </div>
+                                <div class="journey-viewport-content">
+                                    
+                                    <!-- Screen 1: Discovery -->
+                                    <div class="journey-sim-screen active" id="journeyScreen-0">
+                                        <div style="display: grid; grid-template-columns: 1.1fr 1fr; gap: 20px; height: 100%; align-items: start;">
+                                            <!-- Google Search Result -->
+                                            <div class="swiss-card" style="padding: 16px; border: 2px solid #e0e0e0; display: flex; flex-direction: column; gap: 6px;">
+                                                <div style="font-size: 11px; color: #5f6368; margin-bottom: 2px;">Sponsored • https://hadiyahgifting.com</div>
+                                                <h4 style="color: #1a0dab; font-size: 16px; font-weight: 700; margin-bottom: 4px; font-family: var(--font-display); text-align: left;">Hadiyah Gifting | Premium Islamic Gift Boxes &amp; Eid Hampers</h4>
+                                                <p style="font-size: 12px; color: #4d5156; line-height: 1.4; text-align: left;">Luxury Arabic gift hampers, hand-packed premium dates, and customized greeting cards. Fast scheduled delivery across India.</p>
+                                            </div>
+                                            <!-- Meta Catalog Ad -->
+                                            <div class="swiss-card" style="padding: 12px; border: 2px solid #e0e0e0; display: flex; flex-direction: column; gap: 8px;">
+                                                <div style="display: flex; align-items: center; gap: 8px;">
+                                                    <div style="width: 24px; height: 24px; border-radius: 50%; background: #000; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 800;">H</div>
+                                                    <div style="text-align: left;">
+                                                        <div style="font-size: 11px; font-weight: 800;">hadiyah.gifting</div>
+                                                        <div style="font-size: 8px; color: #888; margin-top: -2px;">Sponsored</div>
+                                                    </div>
+                                                </div>
+                                                <!-- Mock Widescreen Gift Box SVG -->
+                                                <div style="height: 130px; background: #fafafa; border: 2px solid #000; border-radius: 8px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+                                                    <svg viewBox="0 0 100 100" style="width: 60px; height: 60px;">
+                                                        <polygon points="50,15 90,35 50,55 10,35" fill="none" stroke="#ff3300" stroke-width="2"/>
+                                                        <polygon points="50,55 90,35 90,75 50,95" fill="none" stroke="#000000" stroke-width="2"/>
+                                                        <polygon points="50,55 10,35 10,75 50,95" fill="none" stroke="#000000" stroke-width="2"/>
+                                                        <path d="M 50,15 L 50,95 M 10,35 L 90,75" stroke="#ff3300" stroke-width="3" opacity="0.3"/>
+                                                    </svg>
+                                                    <div style="position: absolute; bottom: 8px; right: 8px; background: var(--bg-red); color: white; padding: 2px 6px; font-family: var(--font-mono); font-size: 8px; font-weight: 800; border-radius: 4px;">BEST SELLER</div>
+                                                </div>
+                                                <div style="font-size: 11px; font-weight: 700; line-height: 1.3; text-align: left;">Send blessings with our premium Eid Gift Box. Custom cards &amp; scheduled delivery.</div>
+                                                <button style="width: 100%; padding: 8px; background: var(--bg-red); color: white; font-family: var(--font-display); font-size: 11px; font-weight: 800; border: none; border-radius: 6px; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; animation: pulseBtn 2s infinite;">Shop Now</button>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                <!-- Card 3 -->
-                                <div class="decay-step-card" data-flow-step="end" style="max-height: 190px;">
-                                    <div class="decay-card-header">
-                                        <span class="decay-card-num">STAGE 03 / RETENTION &amp; RECOVERY</span>
-                                        <h3 class="decay-card-title">Lifecycle Recovery &amp; Reminders</h3>
+                                    <!-- Screen 2: Catalog Intent Matching -->
+                                    <div class="journey-sim-screen" id="journeyScreen-1">
+                                        <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px; height: 100%; align-items: start;">
+                                            <!-- Left: Product Details -->
+                                            <div style="display: flex; flex-direction: column; gap: 10px; text-align: left;">
+                                                <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-red); font-weight: 800; letter-spacing: 1px;">RAMADAN &amp; EID COLLECTION</span>
+                                                <h3 style="font-family: var(--font-display); font-size: 24px; font-weight: 800; line-height: 1.1; margin: 0;">Luxe Arabic Hamper</h3>
+                                                
+                                                <div style="display: flex; align-items: center; gap: 8px; margin-top: 2px;">
+                                                    <div style="color: #ff9900; font-size: 16px; letter-spacing: -1px;">★★★★★</div>
+                                                    <div style="font-size: 12px; font-weight: 700; color: #4d5156;">4.9 / 5.0 (128 reviews)</div>
+                                                </div>
+
+                                                <div style="font-size: 22px; font-weight: 800; color: #000; margin-top: 4px;">
+                                                    ₹4,500 <span style="font-size: 13px; font-weight: 500; color: #666; text-decoration: line-through;">₹5,200</span>
+                                                    <span style="background: rgba(255, 51, 0, 0.08); color: var(--text-red); font-size: 11px; padding: 2px 6px; border-radius: 4px; margin-left: 6px;">Save 13%</span>
+                                                </div>
+
+                                                <!-- Trust Indicators -->
+                                                <div style="display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 10px;">
+                                                    <div style="display: flex; align-items: center; gap: 8px; padding: 8px 12px; border: 1px solid #e0e0e0; border-radius: 8px; background: #ffffff;">
+                                                        <span style="color: #2e7d32; font-size: 14px; font-weight: bold;">✓</span>
+                                                        <div style="font-size: 11px; font-weight: 800; line-height: 1.2;">CRAWL INDEXED &amp; SCHEMA ACTIVE<br/><span style="color:#666; font-weight:500;">Google Search ratings and prices parsing correctly.</span></div>
+                                                    </div>
+                                                    <div style="display: flex; align-items: center; gap: 8px; padding: 8px 12px; border: 1px solid #e0e0e0; border-radius: 8px; background: #ffffff;">
+                                                        <span style="color: #2e7d32; font-size: 14px; font-weight: bold;">✓</span>
+                                                        <div style="font-size: 11px; font-weight: 800; line-height: 1.2;">STOCK STATUS: GUARANTEED SHIPMENT<br/><span style="color:#666; font-weight:500;">Directly routes order triggers to the custom customizer.</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Right: Product Preview -->
+                                            <div style="border: 2px solid #000; border-radius: 12px; padding: 15px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #ffffff; height: 100%;">
+                                                <!-- Box Preview -->
+                                                <svg viewBox="0 0 100 100" style="width: 100px; height: 100px; margin-bottom: 10px;">
+                                                    <rect x="15" y="15" width="70" height="70" rx="6" fill="none" stroke="#000" stroke-width="2" />
+                                                    <rect x="25" y="25" width="50" height="50" rx="4" fill="none" stroke="var(--bg-red)" stroke-width="2" />
+                                                    <!-- Moon and Star -->
+                                                    <path d="M 50,35 C 57,35 60,42 60,48 C 60,54 55,59 48,59 C 43,59 40,56 40,52 C 43,53 47,51 47,46 C 47,41 43,39 40,41 C 41,37 45,35 50,35 Z" fill="var(--bg-red)"/>
+                                                    <polygon points="56,41 58,45 62,45 59,48 60,52 56,49 53,52 54,48 51,45 55,45" fill="#ff9900"/>
+                                                </svg>
+                                                <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 800; letter-spacing: 1px;">LUXE ARABIC BOX</span>
+                                                <button style="width: 100%; margin-top: 12px; padding: 10px; background: #000; color: white; font-family: var(--font-display); font-size: 12px; font-weight: 800; border: none; border-radius: 8px; cursor: pointer; text-transform: uppercase;">Customize &amp; Buy</button>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="decay-card-body" style="opacity: 1; margin-top: 8px;">
-                                        <p style="margin-bottom: 6px; font-size: 15px;"><strong>Dynamic Retargeting:</strong> Showing catalog ads and cart recovery emails to bounced traffic.</p>
-                                        <p style="font-size: 15px;"><strong>Retention Reminders:</strong> Automated anniversary flows prompt the buyer back next seasonal calendar cycle.</p>
+
+                                    <!-- Screen 3: Gift Card Customizer -->
+                                    <div class="journey-sim-screen" id="journeyScreen-2">
+                                        <div style="display: grid; grid-template-columns: 1.15fr 1fr; gap: 20px; height: 100%; align-items: start;">
+                                            <!-- Left: Personalization Form Inputs -->
+                                            <div style="display: flex; flex-direction: column; gap: 10px; text-align: left;">
+                                                <label style="font-family: var(--font-display); font-size: 12px; font-weight: 800; display: flex; flex-direction: column; gap: 4px;">
+                                                    SELECT CARD THEME:
+                                                    <div style="display: flex; gap: 6px; margin-top: 2px;">
+                                                        <button class="journey-card-type-btn active" data-card-theme="eid" style="flex: 1; padding: 6px; font-size: 10px; font-weight: 800; border: 2px solid #000; border-radius: 6px; background: #ffffff; cursor: pointer; text-transform: uppercase;">Eid</button>
+                                                        <button class="journey-card-type-btn" data-card-theme="anniversary" style="flex: 1; padding: 6px; font-size: 10px; font-weight: 800; border: 2px solid #e0e0e0; border-radius: 6px; background: #ffffff; cursor: pointer; text-transform: uppercase;">Anniversary</button>
+                                                        <button class="journey-card-type-btn" data-card-theme="corporate" style="flex: 1; padding: 6px; font-size: 10px; font-weight: 800; border: 2px solid #e0e0e0; border-radius: 6px; background: #ffffff; cursor: pointer; text-transform: uppercase;">Corporate</button>
+                                                    </div>
+                                                </label>
+                                                
+                                                <label style="font-family: var(--font-display); font-size: 12px; font-weight: 800; display: flex; flex-direction: column; gap: 4px;">
+                                                    PERSONAL GREETING CARD MESSAGE:
+                                                    <textarea id="journeyMsgInput" placeholder="Type blessing message to appear on the luxury card preview..." style="width: 100%; height: 75px; padding: 8px 10px; border: 2px solid #e0e0e0; border-radius: 8px; resize: none; font-family: inherit; font-size: 12px; outline: none; box-sizing: border-box;"></textarea>
+                                                </label>
+
+                                                <label style="font-family: var(--font-display); font-size: 12px; font-weight: 800; display: flex; flex-direction: column; gap: 4px;">
+                                                    SCHEDULE CALENDAR DISPATCH DATE:
+                                                    <input type="date" id="journeyDeliveryDate" value="2026-10-12" style="width: 100%; padding: 8px 10px; border: 2px solid #e0e0e0; border-radius: 8px; font-family: inherit; font-size: 12px; outline: none; box-sizing: border-box;">
+                                                </label>
+                                            </div>
+
+                                            <!-- Right: Interactive Greeting Card Preview -->
+                                            <div style="border: 2px solid #000; border-radius: 12px; padding: 15px; background: #fffdf9; position: relative; box-shadow: inset 0 0 20px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: space-between; height: 260px; box-sizing: border-box;">
+                                                <!-- Gold border decoration -->
+                                                <div style="position: absolute; inset: 8px; border: 1px solid rgba(255, 51, 0, 0.12); border-radius: 6px; pointer-events: none;"></div>
+                                                
+                                                <!-- Card Header -->
+                                                <div style="text-align: center; margin-top: 5px;">
+                                                    <div id="journeyCardHeading" style="font-family: var(--font-display); font-size: 14px; font-weight: 800; letter-spacing: 2px; color: var(--text-red);">EID MUBARAK</div>
+                                                    <div style="width: 30px; height: 1px; background: var(--bg-red); margin: 4px auto;"></div>
+                                                </div>
+                                                
+                                                <!-- Live Message Text -->
+                                                <div id="journeyCardPreviewText" style="font-family: var(--font-display); font-size: 12px; font-weight: 500; font-style: italic; text-align: center; color: #333; padding: 5px 10px; line-height: 1.45; flex: 1; display: flex; align-items: center; justify-content: center; min-height: 80px; word-break: break-word;">
+                                                    Wishing you a blessed, luxury Eid. Sending all our warm prayers and love!
+                                                </div>
+                                                
+                                                <!-- Card Footer -->
+                                                <div style="text-align: center; font-family: var(--font-mono); font-size: 8px; color: #888; margin-bottom: 5px; z-index: 2; letter-spacing: 0.5px;">
+                                                    HADIYAH SIGNATURE GIFTING
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
+
+                                    <!-- Screen 4: SST API Checkout -->
+                                    <div class="journey-sim-screen" id="journeyScreen-3">
+                                        <div style="display: grid; grid-template-columns: 1fr 1.1fr; gap: 20px; height: 100%; align-items: start;">
+                                            <!-- Left: Order Confirmation Invoice -->
+                                            <div class="swiss-card" style="padding: 16px; border: 2px solid #000; background: #ffffff; display: flex; flex-direction: column; justify-content: space-between; border-radius: 12px; height: 260px; box-sizing: border-box; text-align: left;">
+                                                <div>
+                                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                                        <span style="font-family: var(--font-mono); font-size: 10px; font-weight: 800; background: #e8f5e9; color: #2e7d32; padding: 2px 6px; border-radius: 4px;">ORDER SUCCESS</span>
+                                                        <span style="font-family: var(--font-mono); font-size: 10px; color: #888;">#HD-28941</span>
+                                                    </div>
+                                                    <h4 style="font-family: var(--font-display); font-size: 16px; font-weight: 800; margin-bottom: 6px;">Order Confirmed!</h4>
+                                                    <div style="font-size: 11px; color: #555; margin-bottom: 10px; line-height: 1.3;">A confirmation invoice has been sent. Your custom hamper is scheduled for dispatch.</div>
+                                                    
+                                                    <div style="border-top: 1px dashed #e0e0e0; padding-top: 8px; display: flex; justify-content: space-between; font-size: 12px;">
+                                                        <span>Luxe Arabic Hamper</span>
+                                                        <strong>₹4,500.00</strong>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div style="border-top: 2px solid #000; padding-top: 8px; display: flex; justify-content: space-between; font-size: 13px; font-weight: 800; margin-top: auto;">
+                                                    <span>TOTAL PAID</span>
+                                                    <span>₹4,500.00</span>
+                                                </div>
+                                            </div>
+
+                                            <!-- Right: Live Server-Side Conversions Console -->
+                                            <div style="background: #000; border-radius: 12px; padding: 15px; font-family: var(--font-mono); font-size: 10px; color: #00ff66; display: flex; flex-direction: column; overflow: hidden; box-shadow: inset 0 0 15px rgba(255,255,255,0.05); height: 260px; box-sizing: border-box; text-align: left;">
+                                                <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding-bottom: 6px; margin-bottom: 8px; color: #fff; font-weight: 800;">
+                                                    <span>CONVERSIONS API (SST)</span>
+                                                    <span style="background: #2e7d32; color: #fff; padding: 1px 4px; border-radius: 3px; font-size: 8px;">ACTIVE</span>
+                                                </div>
+                                                <div style="flex: 1; display: flex; flex-direction: column; gap: 6px; overflow-y: auto; line-height: 1.3;">
+                                                    <div><span style="color:#888;">[19:54:12]</span> <span style="color:#00bcff;">CAPI_INIT:</span> SST Handshake established</div>
+                                                    <div><span style="color:#888;">[19:54:13]</span> <span style="color:#ffcc00;">PAYLOAD:</span> { event: "Purchase", id: "HD28941", value: 4500 }</div>
+                                                    <div><span style="color:#888;">[19:54:13]</span> <span style="color:#00bcff;">KEYS:</span> [fbp=8321.94, mail=hash_sha256]</div>
+                                                    <div style="margin-top: 4px; padding: 6px; background: rgba(0, 255, 102, 0.08); border-radius: 6px; border-left: 3px solid #00ff66; font-size: 9px; line-height: 1.3;">
+                                                        <span style="font-weight:bold;">✔ [STATUS 200 OK]:</span> Conversion signal mapped. Ad bidding algorithm optimized.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Screen 5: Retention Loop -->
+                                    <div class="journey-sim-screen" id="journeyScreen-4">
+                                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; height: 100%; align-items: start;">
+                                            <!-- Left: Klaviyo Email Notification -->
+                                            <div class="swiss-card" style="padding: 16px; border: 2px solid #000; background: #ffffff; border-radius: 12px; display: flex; flex-direction: column; gap: 8px; text-align: left; height: 260px; box-sizing: border-box;">
+                                                <div style="font-family: var(--font-mono); font-size: 10px; color: var(--text-red); font-weight: 800; letter-spacing: 0.5px;">AUTOMATED EMAIL FLOW</div>
+                                                <div style="border: 1px solid #e0e0e0; border-radius: 6px; padding: 6px; font-size: 11px; background: #fafafa; line-height: 1.35;">
+                                                    <strong>From:</strong> Hadiyah Gifting Reminders<br/>
+                                                    <strong>To:</strong> ahmad.khan@gmail.com<br/>
+                                                    <strong>Subject:</strong> ⏰ Anniversary reminder - Send blessings to Sarah
+                                                </div>
+                                                <div style="font-size: 11px; line-height: 1.4; color: #444; margin-top: 4px;">
+                                                    "Hi Ahmad, exactly 11 months ago you ordered a <strong>Luxe Arabic Hamper</strong> for Sarah. Would you like to repeat the order for birthday blessings today?"
+                                                </div>
+                                                <button style="margin-top: auto; padding: 8px; background: var(--bg-red); color: white; border: none; border-radius: 6px; font-family: var(--font-display); font-size: 11px; font-weight: 800; cursor: pointer; text-transform: uppercase;">Repeat Order (10% Off)</button>
+                                            </div>
+
+                                            <!-- Right: Lifecycle Loop Chart -->
+                                            <div style="border: 2px dashed #ff3300; border-radius: 12px; padding: 15px; display: flex; flex-direction: column; justify-content: space-between; background: rgba(255, 51, 0, 0.02); height: 260px; box-sizing: border-box; text-align: left;">
+                                                <span style="font-family: var(--font-mono); font-size: 10px; font-weight: 800; color: #000; letter-spacing: 0.5px;">LIFECYCLE REVENUE LOOP</span>
+                                                
+                                                <div style="display: flex; flex-direction: column; gap: 8px; margin: 10px 0;">
+                                                    <div style="display: flex; justify-content: space-between; font-size: 11px;">
+                                                        <span>Oct 12, 2025:</span>
+                                                        <strong>Original Purchase</strong>
+                                                    </div>
+                                                    <div style="height: 8px; background: #e0e0e0; border-radius: 4px; position: relative; overflow: hidden;">
+                                                        <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 92%; background: var(--bg-red);"></div>
+                                                    </div>
+                                                    <div style="display: flex; justify-content: space-between; font-size: 11px; color: var(--text-red);">
+                                                        <span>Sep 12, 2026 (11 mos):</span>
+                                                        <strong>Anniversary Flow Active</strong>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div style="font-size: 11px; line-height: 1.35; color: #555; border-top: 1px solid #ff3300; padding-top: 8px;">
+                                                    <strong>LTV Compounding:</strong> Seamlessly routes seasonal gift buyers into recurring loops. Re-acquisition CAC drops to zero, boosting repeat margin yield.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
-                            
                         </div>
                     </div>
 <div class="slide-footer">
@@ -3701,62 +3916,89 @@
             }
 
             setupSlide16CustomerJourney() {
-                const stepCards = document.querySelectorAll('[data-flow-step]');
-                if (stepCards.length === 0) return;
+                const stepBtns = document.querySelectorAll('.journey-step-btn');
+                const screens = document.querySelectorAll('.journey-sim-screen');
+                const browserUrl = document.getElementById('journeyBrowserUrl');
+                if (stepBtns.length === 0) return;
 
-                const clearActive = () => {
-                    document.querySelectorAll('.flow-node').forEach(n => n.classList.remove('active'));
-                    stepCards.forEach(c => c.classList.remove('active'));
+                const urls = [
+                    "google.com/search?q=premium+eid+gift+box",
+                    "hadiyahgifting.com/products/luxe-arabic-hamper",
+                    "hadiyahgifting.com/products/luxe-arabic-hamper#customize",
+                    "hadiyahgifting.com/checkout/success",
+                    "hadiyahgifting.com/dashboard/lifecycle-anniversary"
+                ];
+
+                let currentStep = 0;
+                let autoPlayInterval = null;
+
+                const showStep = (idx) => {
+                    stepBtns.forEach((btn, i) => btn.classList.toggle('active', i === idx));
+                    screens.forEach((screen, i) => screen.classList.toggle('active', i === idx));
+                    if (browserUrl) browserUrl.textContent = urls[idx];
+                    currentStep = idx;
                 };
 
-                const activateStep = (stepName, card) => {
-                    clearActive();
-                    card.classList.add('active');
-                    
-                    if (stepName === 'start') {
-                        const node = document.getElementById('flow-start');
-                        if (node) node.classList.add('active');
-                    } else if (stepName === 'check-process') {
-                        const nodeCheck = document.getElementById('flow-check');
-                        const nodeProc = document.getElementById('flow-process');
-                        if (nodeCheck) nodeCheck.classList.add('active');
-                        if (nodeProc) nodeProc.classList.add('active');
-                    } else if (stepName === 'end') {
-                        const node = document.getElementById('flow-end');
-                        if (node) node.classList.add('active');
-                    }
+                const startAutoPlay = () => {
+                    if (autoPlayInterval) clearInterval(autoPlayInterval);
+                    autoPlayInterval = setInterval(() => {
+                        let nextStep = (currentStep + 1) % stepBtns.length;
+                        showStep(nextStep);
+                    }, 6000);
                 };
 
-                stepCards.forEach(card => {
-                    const stepName = card.getAttribute('data-flow-step');
-                    card.addEventListener('mouseenter', () => activateStep(stepName, card));
-                    card.addEventListener('click', () => activateStep(stepName, card));
-                });
+                const stopAutoPlay = () => {
+                    if (autoPlayInterval) clearInterval(autoPlayInterval);
+                };
 
-                const nodes = document.querySelectorAll('.flow-node');
-                nodes.forEach(node => {
-                    node.addEventListener('mouseenter', () => {
-                        clearActive();
-                        node.classList.add('active');
-                        const id = node.id;
-                        let stepName = '';
-                        if (id === 'flow-start') stepName = 'start';
-                        else if (id === 'flow-check' || id === 'flow-process') {
-                            stepName = 'check-process';
-                            const nodeCheck = document.getElementById('flow-check');
-                            const nodeProc = document.getElementById('flow-process');
-                            if (nodeCheck) nodeCheck.classList.add('active');
-                            if (nodeProc) nodeProc.classList.add('active');
-                        }
-                        else if (id === 'flow-end') stepName = 'end';
-                        
-                        const card = document.querySelector(`[data-flow-step="${stepName}"]`);
-                        if (card) card.classList.add('active');
+                stepBtns.forEach((btn, idx) => {
+                    btn.addEventListener('click', () => {
+                        stopAutoPlay();
+                        showStep(idx);
+                        startAutoPlay();
                     });
                 });
 
-                // Initially activate first step
-                activateStep('start', stepCards[0]);
+                // Start initially
+                showStep(0);
+                startAutoPlay();
+
+                // Live customizer input trigger (Screen 3)
+                const textInput = document.getElementById('journeyMsgInput');
+                const previewText = document.getElementById('journeyCardPreviewText');
+                if (textInput && previewText) {
+                    textInput.addEventListener('input', (e) => {
+                        const val = e.target.value.trim();
+                        previewText.textContent = val !== "" ? val : "Wishing you a blessed, luxury Eid. Sending all our warm prayers and love!";
+                    });
+                }
+
+                // Theme switcher trigger (Screen 3)
+                const themeBtns = document.querySelectorAll('.journey-card-type-btn');
+                const headingText = document.getElementById('journeyCardHeading');
+                const msgTemplates = {
+                    eid: "Wishing you a blessed, luxury Eid. Sending all our warm prayers and love!",
+                    anniversary: "Happy Anniversary! Wishing you another year of love, happiness, and beautiful milestones.",
+                    corporate: "Thank you for your valuable partnership. Wishing your team continued growth and success."
+                };
+
+                themeBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        themeBtns.forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        const theme = btn.getAttribute('data-card-theme');
+                        
+                        if (headingText) {
+                            headingText.textContent = theme === 'eid' ? 'EID MUBARAK' : (theme === 'anniversary' ? 'HAPPY ANNIVERSARY' : 'CORPORATE RECOGNITION');
+                        }
+                        if (previewText) {
+                            previewText.textContent = msgTemplates[theme];
+                        }
+                        if (textInput) {
+                            textInput.value = msgTemplates[theme];
+                        }
+                    });
+                });
             }
 
             setupSlide6DecayLoop() {
