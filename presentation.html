@@ -1343,6 +1343,122 @@
                 display: none !important;
             }
         }
+
+        /* ===========================================
+           LEFT NAVIGATION SIDEBAR STYLING
+           =========================================== */
+        .left-nav-sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 280px;
+            background: rgba(10, 10, 10, 0.98);
+            border-right: 2px solid var(--bg-red);
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.4s var(--ease-out-expo);
+            transform: translateX(-100%);
+            box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
+        }
+        .left-nav-sidebar.open {
+            transform: translateX(0);
+        }
+        .sidebar-toggle-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 10000;
+            background: rgba(0, 0, 0, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .sidebar-toggle-btn:hover {
+            color: var(--text-red);
+            border-color: var(--bg-red);
+            background: rgba(255, 51, 0, 0.1);
+        }
+        .sidebar-header {
+            padding: 24px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .sidebar-title {
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 800;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .sidebar-list {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 20px 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 15px;
+            border-radius: 8px;
+            color: #aaaaaa;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 14px;
+            text-align: left;
+            font-family: var(--font-body);
+        }
+        .sidebar-item:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .sidebar-item.active {
+            color: #ffffff;
+            background: var(--accent-soft);
+            border-left: 4px solid var(--bg-red);
+            font-weight: 700;
+        }
+        .sidebar-slide-num {
+            font-family: var(--font-mono);
+            color: var(--text-red);
+            font-weight: 700;
+        }
+
+        /* Fullscreen & Hide Controls Transitions */
+        .deck-controls {
+            transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        body.presentation-mode .deck-controls {
+            opacity: 0;
+            pointer-events: none;
+            transform: translate(-50%, 50px);
+        }
+        body.presentation-mode .sidebar-toggle-btn {
+            opacity: 0;
+            pointer-events: none;
+        }
+        body.presentation-mode .deck-controls:hover,
+        body.presentation-mode.controls-hovered .deck-controls {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translate(-50%, 0);
+        }
     </style>
 </head>
 <body>
@@ -1354,17 +1470,23 @@
                =========================================== -->
             <section class="slide title-slide active" id="slide-1">
                 <div class="grid-overlay"></div>
-                <div class="slide-content" style="background: var(--bg-dark); color: var(--text-light); justify-content: center; align-items: flex-start; padding: 100px;">
-                    <!-- Brand Collaboration SVG Logos inside a clean container -->
-                    <div class="reveal" style="display: flex; align-items: center; gap: 30px; background: #ffffff; padding: 15px 30px; border-radius: 16px; margin-bottom: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
-                        <img src="./giftechglobal.com logo.svg" alt="Giftech Global Logo" style="height: 50px; object-fit: contain;">
-                        <span style="font-family: var(--font-display); font-size: 30px; font-weight: 800; color: #888888;">×</span>
-                        <img src="./hadiyah_logo_.svg" alt="Hadiyah Gifting Logo" style="height: 55px; object-fit: contain;">
+                <div class="slide-content" style="background: var(--bg-primary); color: var(--text-dark); justify-content: center; align-items: flex-start; padding: 100px;">
+                    <!-- Branding Header with Presented By (OnDigi Logo) & Client Logos side-by-side -->
+                    <div class="reveal" style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 50px;">
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <span style="font-family: var(--font-mono); font-size: 14px; font-weight: 700; color: #888888; letter-spacing: 2px; text-transform: uppercase;">Presented by</span>
+                            <img src="./Ondigi logo.svg" alt="OnDigi Solutions Logo" style="height: 80px; width: auto; object-fit: contain; align-self: flex-start;">
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 20px; background: rgba(0,0,0,0.03); border: 2px solid var(--border-color); padding: 15px 25px; border-radius: 12px;">
+                            <img src="./giftechglobal.com logo.svg" alt="Giftech Global Logo" style="height: 45px; object-fit: contain;">
+                            <span style="font-family: var(--font-display); font-size: 24px; font-weight: 800; color: #888888;">×</span>
+                            <img src="./hadiyah_logo_.svg" alt="Hadiyah Gifting Logo" style="height: 50px; object-fit: contain;">
+                        </div>
                     </div>
                     <div class="reveal" style="font-family: var(--font-mono); font-size: 16px; font-weight: 700; color: var(--text-red); border-bottom: 2px solid var(--text-red); padding-bottom: 10px; margin-bottom: 30px; letter-spacing: 2px;">
                         ONDIGI SOLUTIONS PRESENTS
                     </div>
-                    <h1 class="reveal" style="font-family: var(--font-display); font-size: 96px; font-weight: 800; text-transform: uppercase; line-height: 0.95; letter-spacing: -2px; margin-bottom: 20px;">
+                    <h1 class="reveal" style="font-family: var(--font-display); font-size: 96px; font-weight: 800; text-transform: uppercase; line-height: 0.95; letter-spacing: -2px; margin-bottom: 20px; color: var(--text-dark);">
                         Revenue Growth Strategy
                     </h1>
                     <p class="reveal" style="font-size: 32px; font-weight: 700; margin-bottom: 50px; color: var(--text-red);">
@@ -1696,7 +1818,7 @@
                             </div>
                             
                             <!-- Middle Column: Shift Divider (Static Red Line, No Animation) -->
-                            <div class="shift-divider-col">
+                            <div class="shift-divider-col" style="position: relative; left: -50px;">
                                 <span class="shift-label">THE SHIFT</span>
                                 <div class="shift-line-container" style="height: 468px;">
                                     <div class="shift-line-track"></div>
@@ -1704,8 +1826,8 @@
                                 </div>
                             </div>
                             
-                            <!-- Right Column: Generative Flow (centered with extra left offset to avoid divider closeness) -->
-                            <div style="width: 100%; display: flex; justify-content: center; padding-left: 50px;">
+                            <!-- Right Column: Generative Flow (centered to balance layout) -->
+                            <div style="width: 100%; display: flex; justify-content: center; position: relative; left: 80px;">
                                 <div class="vertical-flow-container" id="generativeFlow">
                                     <!-- Connector Line Segments (Grey tracks) -->
                                     <div class="flow-line-track" style="top: 52px; height: 52px;">
@@ -3103,6 +3225,11 @@
         <button class="control-btn" id="nextBtn" title="Next Slide (→ / Space / PageDown)">▶</button>
         <button class="control-btn" id="laserBtn" title="Toggle Laser Pointer (L)">🔴</button>
         <button class="control-btn" id="notesBtn" title="Toggle Speaker Notes (N)">📓</button>
+        <button class="control-btn" id="fullscreenBtn" title="Toggle Fullscreen (F)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;">
+                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+            </svg>
+        </button>
         <button class="control-btn" id="editBtn" title="Toggle Edit Mode (E)">✏️</button>
         <button class="control-btn" id="exportBtn" title="Export HTML File" style="display: none;">📥</button>
     </div>
@@ -3143,6 +3270,8 @@
                 this.setupTouchNav();
                 this.setupControlButtons();
                 this.setupLaserPointer();
+                this.setupLeftSidebar();
+                this.setupFullscreen();
                 this.setupSlideSpecificInteractions();
                 this.showSlide(0);
             }
@@ -3524,6 +3653,12 @@
                 } else {
                     this.notesContent.innerHTML = '<p><em>No speaker notes for this slide.</em></p>';
                 }
+
+                // Update active sidebar item
+                const sidebarItems = document.querySelectorAll('.sidebar-item');
+                sidebarItems.forEach((item, i) => {
+                    item.classList.toggle('active', i === this.currentSlide);
+                });
             }
 
             next() {
@@ -3544,6 +3679,155 @@
                 this.laser.style.display = this.laserActive ? 'block' : 'none';
                 document.body.classList.toggle('laser-active', this.laserActive);
                 document.getElementById('laserBtn').classList.toggle('active', this.laserActive);
+            }
+
+            setupLeftSidebar() {
+                const sidebar = document.createElement('div');
+                sidebar.className = 'left-nav-sidebar';
+                sidebar.id = 'leftSidebar';
+                
+                const header = document.createElement('div');
+                header.className = 'sidebar-header';
+                header.innerHTML = `
+                    <div class="sidebar-title">Slide Navigator</div>
+                    <button class="close-notes-btn" id="closeSidebarBtn">✕</button>
+                `;
+                sidebar.appendChild(header);
+                
+                const list = document.createElement('div');
+                list.className = 'sidebar-list';
+                sidebar.appendChild(list);
+                
+                document.querySelector('.deck-viewport').appendChild(sidebar);
+                
+                // Create Toggle Button
+                const toggleBtn = document.createElement('button');
+                toggleBtn.className = 'sidebar-toggle-btn';
+                toggleBtn.id = 'sidebarToggleBtn';
+                toggleBtn.title = 'Toggle Slide Navigator (M)';
+                toggleBtn.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                `;
+                document.body.appendChild(toggleBtn);
+                
+                // Generate list items
+                this.slides.forEach((slide, idx) => {
+                    const item = document.createElement('div');
+                    item.className = 'sidebar-item';
+                    if (idx === this.currentSlide) item.classList.add('active');
+                    
+                    // Extract slide title
+                    let slideTitle = "";
+                    const titleEl = slide.querySelector('.slide-title');
+                    const h1El = slide.querySelector('h1');
+                    const sectionTag = slide.querySelector('.section-tag');
+                    
+                    if (titleEl) {
+                        slideTitle = titleEl.textContent;
+                    } else if (h1El) {
+                        slideTitle = h1El.textContent;
+                    } else if (sectionTag) {
+                        slideTitle = sectionTag.textContent;
+                    } else {
+                        slideTitle = `Slide ${idx + 1}`;
+                    }
+                    
+                    // Limit slide title length
+                    if (slideTitle.length > 25) {
+                        slideTitle = slideTitle.substring(0, 22) + "...";
+                    }
+                    
+                    const formattedNum = String(idx + 1).padStart(2, '0');
+                    item.innerHTML = `
+                        <span class="sidebar-slide-num">${formattedNum}</span>
+                        <span class="sidebar-slide-title">${slideTitle}</span>
+                    `;
+                    
+                    item.addEventListener('click', () => {
+                        this.showSlide(idx);
+                        sidebar.classList.remove('open');
+                    });
+                    list.appendChild(item);
+                });
+                
+                // Event listeners
+                toggleBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    sidebar.classList.toggle('open');
+                });
+                
+                document.getElementById('closeSidebarBtn').addEventListener('click', () => {
+                    sidebar.classList.remove('open');
+                });
+                
+                // Close sidebar when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!sidebar.contains(e.target) && !toggleBtn.contains(e.target)) {
+                        sidebar.classList.remove('open');
+                    }
+                });
+                
+                // Key binding 'm' / 'M' to toggle sidebar navigator
+                document.addEventListener('keydown', (e) => {
+                    if (e.target.getAttribute('contenteditable') === 'true') return;
+                    if (e.key === 'm' || e.key === 'M') {
+                        sidebar.classList.toggle('open');
+                    }
+                });
+            }
+
+            setupFullscreen() {
+                const fullscreenBtn = document.getElementById('fullscreenBtn');
+                if (!fullscreenBtn) return;
+
+                const toggleFullscreen = () => {
+                    if (!document.fullscreenElement) {
+                        document.documentElement.requestFullscreen().catch(err => {
+                            console.error(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+                        });
+                    } else {
+                        document.exitFullscreen();
+                    }
+                };
+
+                fullscreenBtn.addEventListener('click', toggleFullscreen);
+                
+                document.addEventListener('keydown', (e) => {
+                    if (e.target.getAttribute('contenteditable') === 'true') return;
+                    if (e.key === 'f' || e.key === 'F') {
+                        toggleFullscreen();
+                    }
+                });
+
+                // Listen to fullscreen changes to set body class
+                document.addEventListener('fullscreenchange', () => {
+                    const fullscreenBtn = document.getElementById('fullscreenBtn');
+                    if (document.fullscreenElement) {
+                        document.body.classList.add('presentation-mode');
+                        if (fullscreenBtn) fullscreenBtn.classList.add('active');
+                        // Close sidebar if open
+                        const sidebar = document.getElementById('leftSidebar');
+                        if (sidebar) sidebar.classList.remove('open');
+                    } else {
+                        document.body.classList.remove('presentation-mode');
+                        if (fullscreenBtn) fullscreenBtn.classList.remove('active');
+                    }
+                });
+
+                // Mouse hover check for showing/hiding controls in fullscreen
+                document.addEventListener('mousemove', (e) => {
+                    if (document.body.classList.contains('presentation-mode')) {
+                        if (window.innerHeight - e.clientY < 80) {
+                            document.body.classList.add('controls-hovered');
+                        } else {
+                            document.body.classList.remove('controls-hovered');
+                        }
+                    }
+                });
             }
         }
 
