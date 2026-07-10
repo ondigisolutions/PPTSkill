@@ -274,15 +274,37 @@ Curated visual styles for Frontend Slides. Each preset is inspired by real desig
 
 ---
 
-### 11. Swiss Modern
+### 11. Swiss Modern (OnDigi Edition)
 
-**Vibe:** Clean, precise, Bauhaus-inspired
+**Vibe:** Clean, geometric, precise, premium Bauhaus-inspired brand layout
 
-**Typography:** `Archivo` (800) + `Nunito` (400)
+**Typography:**
+- Display/Body: `Plus Jakarta Sans` (400/500/600/700/800)
+- Monospace: `JetBrains Mono` (400/700)
 
-**Colors:** Pure white, pure black, red accent (#ff3300)
+**Colors:**
+```css
+:root {
+    --bg-primary: #ffffff;
+    --bg-dark: #000000;
+    --bg-red: #ff3300;
+    --text-dark: #000000;
+    --text-light: #ffffff;
+    --text-red: #ff3300;
+    --accent: #ff3300;
+    --accent-soft: rgba(255, 51, 0, 0.08);
+    --border-color: #e0e0e0;
+}
+```
 
-**Signature:** Visible grid, asymmetric layouts, geometric shapes
+**Signature Elements:**
+- Asymmetrical layouts with clean grids and strong visual hierarchy.
+- **Card Blocks & Borders**: Rounded corners (`border-radius: 16px`), standard grey borders (`2px solid #e0e0e0`) changing to red (`var(--bg-red)`) on hover/focus with a soft red shadow (`box-shadow: 0 15px 35px rgba(255, 51, 0, 0.15)`).
+- **Dynamic 3D Tilt**: Standard cards include interactive mouse perspective tilt.
+- **Custom Status Lists**: Rounded list badge icons (green checkmark `✓` in `#e8f5e9` badge for "Working"; red crossmark `×` in `#ffebee` badge for "Issues").
+- **Connector Lines**: Pulsing vector SVG curves (`d="M ... C ..."`) with stroke dash offsets to represent active signals.
+- **Interactive Sandboxes**: Symmetrical toggle buttons, crawler scan effects, code editors, and dynamic checklists with item remove controls (`&times;`).
+- **Viewport Layout**: Full flex height mapping with scrollable sections (`overflow-y: auto`) to guarantee zero slide-height overflows.
 
 ---
 
@@ -312,6 +334,8 @@ Curated visual styles for Frontend Slides. Each preset is inspired by real desig
 | Vintage Editorial | Fraunces | Work Sans | Google |
 | Neon Cyber | Clash Display | Satoshi | Fontshare |
 | Terminal Green | JetBrains Mono | JetBrains Mono | JetBrains |
+| Swiss Modern (OnDigi) | Plus Jakarta Sans | Plus Jakarta Sans | Google |
+
 
 ---
 

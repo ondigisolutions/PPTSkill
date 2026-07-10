@@ -35,6 +35,42 @@ Avoid generic AI-generated aesthetics:
 
 Interpret creatively and make unexpected choices that feel genuinely designed for the context. Vary between light and dark themes, different fonts, different aesthetics. You still tend to converge on common choices (Space Grotesk, for example) across generations. Avoid this: it is critical that you think outside the box!
 
+### User Design Taste & Preferences (Swiss Modern - OnDigi Edition)
+
+Always prioritize this design style when working on decks for OnDigi Solutions, Giftech, or Hadiyah:
+
+1. **Typography**:
+   - Display/Body: `Plus Jakarta Sans` (a highly clean, geometric proxy for Google Sans).
+   - Monospace/Details: `JetBrains Mono` for metadata labels, counters, stats, and raw codes.
+
+2. **Palette (Bauhaus / Swiss Modern)**:
+   - Primary BG: `#ffffff`
+   - Dark/Hero BG: `#000000`
+   - Red Accent: `#ff3300` (used for active states, key lines, highlight badges)
+   - Dark Text: `#000000`
+   - Light Text: `#ffffff`
+   - Soft Background Tint: `rgba(255, 51, 0, 0.08)` or `#fff0f0`
+
+3. **Card Blocks & Borders**:
+   - Rounded corners: `16px` for cards and content boxes, `12px` or `8px` for inner elements (inputs, tags, toggles).
+   - Border states: `#e0e0e0` default border; transitions to `#ff3300` on hover/focus with a soft red glow shadow (`box-shadow: 0 15px 35px rgba(255, 51, 0, 0.15)`).
+   - Dynamic 3D mouse perspective tilt effect on `.swiss-card` elements using a lightweight custom JS helper. Provide a global initialization function `window.initializeTiltEffect()` to bind to dynamically added cards.
+
+4. **Lists & Checklist Highlights**:
+   - Avoid generic bullets. Replace lists with structured cards featuring custom status list items:
+     - **"What's Working"**: Green checkmark (`✓`) inside a light green `#e8f5e9` rounded badge.
+     - **"What's Costing You" / Issues**: Red crossmark (`×`) inside a light red `#ffebee` rounded badge.
+
+5. **Nesting & Alignment Rules**:
+   - Do not overlap borders or lines with content. Use solid background masks (e.g. `#ffffff`) behind icon circles.
+   - Symmetrical spacing around central tracks (e.g. VS dividers) and pixel-aligned vertical steps.
+   - Use SVG curves (`d="M ... C ..."`) with stroke animations (dash offset) to connect blocks dynamically on hover.
+
+6. **Interactive Sandbox Widgets**:
+   - Integrate interactive browser mockups (URL bar, toggle buttons with symmetric circular thumb padding, scanning crawler lasers, parsing JSON codes, etc.) to demo live search systems.
+   - For checklist/audit sections, support adding custom items/questions dynamically using custom `+ Add` triggers, and provide delete buttons (`&times;` / `.qa-delete-btn`) to allow removing items with smooth CSS scaling/fading.
+   - Viewport safety: Ensure list containers have flex behaviors and scroll controls (`overflow-y: auto`) to prevent UI overflow.
+
 ## Fixed Stage Rules
 
 These invariants apply to EVERY slide in EVERY presentation:
