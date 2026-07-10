@@ -1707,77 +1707,135 @@
         }
 
         /* ===========================================
-           SLIDE 11: SEO & AI AUDIT MATRIX STYLING
+           SLIDE 11: SEO & AI AUDIT MATRIX STYLING (REFINED TOGGLABLE)
            =========================================== */
+        .audit-layout-grid {
+            display: grid;
+            grid-template-columns: 310px 1fr;
+            gap: 24px;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .audit-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            background: #fafafa;
+            border: 2px solid #e0e0e0;
+            border-radius: 16px;
+            padding: 24px;
+            box-sizing: border-box;
+            text-align: left;
+        }
+        .audit-cards-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            width: 100%;
+            align-content: start;
+        }
         .audit-card {
             border: 2px solid #e0e0e0;
             background: #ffffff;
             border-radius: 16px;
-            padding: 22px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             gap: 12px;
-            min-height: 240px;
+            min-height: 228px;
             box-sizing: border-box;
             transition: all 0.3s var(--ease-out-expo);
+            position: relative;
             text-align: left;
         }
+        .audit-card.state-problem {
+            border-color: #e0e0e0;
+        }
+        .audit-card.state-solution {
+            border-color: #2e7d32;
+            background: #fcfdfc;
+            box-shadow: 0 10px 20px rgba(46, 125, 50, 0.04);
+        }
         .audit-card:hover {
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.04);
+        }
+        .audit-card.state-problem:hover {
             border-color: var(--bg-red);
-            box-shadow: 0 15px 30px rgba(255, 51, 0, 0.08);
-            transform: translateY(-2px);
+        }
+        .audit-card.state-solution:hover {
+            border-color: #2e7d32;
+            box-shadow: 0 12px 24px rgba(46, 125, 50, 0.08);
         }
         .audit-card-num {
             font-family: var(--font-mono);
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 800;
-            color: #888888;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            color: #888;
+            letter-spacing: 0.5px;
         }
         .audit-card-title {
             font-family: var(--font-display);
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 800;
             color: var(--text-dark);
+            margin: 0;
             line-height: 1.2;
-            margin-top: -4px;
         }
-        .audit-section-block {
+        .audit-card-content {
+            font-size: 13px;
+            line-height: 1.45;
+            color: #333;
+            flex-grow: 1;
+        }
+        
+        /* Card toggle tabs */
+        .card-toggle-tabs {
             display: flex;
-            flex-direction: column;
-            gap: 4px;
+            background: #f0f0f0;
+            border-radius: 8px;
+            padding: 3px;
+            gap: 2px;
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: auto;
         }
-        .audit-badge-problem {
+        .toggle-tab-btn {
+            flex: 1;
+            border: none;
+            padding: 6px;
+            font-family: var(--font-mono);
+            font-size: 9px;
+            font-weight: 800;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: transparent;
+            color: #666;
+            text-align: center;
+        }
+        .toggle-tab-btn.active-problem {
             background: #ffebee;
             color: #c62828;
-            font-family: var(--font-mono);
-            font-size: 9px;
-            font-weight: 800;
-            padding: 3px 6px;
-            border-radius: 4px;
-            letter-spacing: 0.5px;
-            display: inline-block;
-            width: fit-content;
-            text-transform: uppercase;
         }
-        .audit-badge-solution {
+        .toggle-tab-btn.active-solution {
             background: #e8f5e9;
             color: #2e7d32;
-            font-family: var(--font-mono);
-            font-size: 9px;
-            font-weight: 800;
-            padding: 3px 6px;
-            border-radius: 4px;
-            letter-spacing: 0.5px;
-            display: inline-block;
-            width: fit-content;
-            text-transform: uppercase;
         }
-        .audit-text {
-            font-size: 12.5px;
+        
+        /* Strengths Styles */
+        .strength-item {
+            display: flex;
+            align-items: start;
+            gap: 10px;
+            font-size: 13px;
             line-height: 1.4;
-            color: #444444;
+            color: #444;
+        }
+        .strength-icon {
+            color: #2e7d32;
+            font-weight: bold;
+            font-size: 14px;
         }
 
         /* ===========================================
@@ -2563,92 +2621,146 @@
 <section class="slide" id="slide-11">
 <div class="grid-overlay"></div>
 <div class="slide-content">
-<div class="slide-header">
+<div class="slide-header" style="display: flex; justify-content: space-between; align-items: start; width: 100%;">
 <div class="slide-title-area">
 <span class="section-tag">Giftech Global</span>
 <h2 class="slide-title">SEO &amp; AI Visibility Audit</h2>
 <p class="slide-subtitle">Technical portfolio gaps and direct structural solutions</p>
 </div>
-<div class="slide-number-top">11</div>
+<div style="display: flex; gap: 8px; align-items: center; margin-top: 15px; margin-right: 40px;">
+    <button class="global-toggle-btn active-problem" id="btnShowAllGaps" style="padding: 6px 12px; font-family: var(--font-mono); font-size: 9px; font-weight: 800; border: 2px solid #ccc; background: #fff; cursor: pointer; border-radius: 8px; transition: all 0.2s ease;">ALL PROBLEMS</button>
+    <button class="global-toggle-btn" id="btnShowAllSolutions" style="padding: 6px 12px; font-family: var(--font-mono); font-size: 9px; font-weight: 800; border: 2px solid #ccc; background: #fff; cursor: pointer; border-radius: 8px; transition: all 0.2s ease;">ALL SOLUTIONS</button>
+</div>
+<div class="slide-number-top" style="position: static; margin-top: 15px;">11</div>
 </div>
                     <div class="slide-body" style="height: calc(100% - 150px); margin-top: 15px;">
-                        <div id="auditCardsGrid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: 100%; box-sizing: border-box;">
-                            <!-- Card 1 -->
-                            <div class="audit-card">
-                                <div class="audit-card-num">01 / SCHEMA FRAMEWORK</div>
-                                <h3 class="audit-card-title">Structured Data</h3>
-                                <div class="audit-section-block">
-                                    <span class="audit-badge-problem">The Problem</span>
-                                    <p class="audit-text">Absence of JSON-LD Organization or WebSite schemas leaves the brand completely invisible to AI search engine entity associations.</p>
+                        <div class="audit-layout-grid">
+                            <!-- Sidebar: Context & Strengths -->
+                            <div class="audit-sidebar">
+                                <div style="border-bottom: 2px solid #e0e0e0; padding-bottom: 12px;">
+                                    <span style="font-family: var(--font-mono); font-size: 9px; font-weight: 800; color: var(--text-red); text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 4px;">Audit Context</span>
+                                    <p style="font-size: 13px; line-height: 1.45; color: #333; margin: 0; font-weight: bold;">GEO Optimizer Foundation</p>
+                                    <p style="font-size: 12px; line-height: 1.4; color: #666; margin: 4px 0 0 0;">Only GEO/AI-readiness data available, no full technical SEO audit like Hadiyah has.</p>
                                 </div>
-                                <div class="audit-section-block" style="margin-top: auto;">
-                                    <span class="audit-badge-solution">The Solution</span>
-                                    <p class="audit-text">Inject corporate schema architectures into Liquid files to map the domain in search engine Knowledge Graphs.</p>
-                                </div>
-                            </div>
-                            <!-- Card 2 -->
-                            <div class="audit-card">
-                                <div class="audit-card-num">02 / SEMANTIC TABLES</div>
-                                <h3 class="audit-card-title">Data Structure</h3>
-                                <div class="audit-section-block">
-                                    <span class="audit-badge-problem">The Problem</span>
-                                    <p class="audit-text">Catalog specifications and bulk options are written in loose list bullets, preventing B2B comparison engine scraper parsers.</p>
-                                </div>
-                                <div class="audit-section-block" style="margin-top: auto;">
-                                    <span class="audit-badge-solution">The Solution</span>
-                                    <p class="audit-text">Reformat list configurations into semantic HTML tables, lifting RAG comparison matches by up to 54%.</p>
-                                </div>
-                            </div>
-                            <!-- Card 3 -->
-                            <div class="audit-card">
-                                <div class="audit-card-num">03 / VALUE PROP (BLUF)</div>
-                                <h3 class="audit-card-title">Brand Summarization</h3>
-                                <div class="audit-section-block">
-                                    <span class="audit-badge-problem">The Problem</span>
-                                    <p class="audit-text">Core B2B value propositions are buried under banner carousels. AI summarizers fail to extract the brand identity.</p>
-                                </div>
-                                <div class="audit-section-block" style="margin-top: auto;">
-                                    <span class="audit-badge-solution">The Solution</span>
-                                    <p class="audit-text">Deploy a single-viewport Bottom-Line-Up-Front (BLUF) summary paragraph in the hero block for instant indexing.</p>
-                                </div>
-                            </div>
-                            <!-- Card 4 -->
-                            <div class="audit-card">
-                                <div class="audit-card-num">04 / WAF LIMITATIONS</div>
-                                <h3 class="audit-card-title">Crawler Access</h3>
-                                <div class="audit-section-block">
-                                    <span class="audit-badge-problem">The Problem</span>
-                                    <p class="audit-text">Aggressive firewall rate limits trigger HTTP 429 blocks on automated crawler scripts, lockading AI indexer bots.</p>
-                                </div>
-                                <div class="audit-section-block" style="margin-top: auto;">
-                                    <span class="audit-badge-solution">The Solution</span>
-                                    <p class="audit-text">Whitelist verified search spider IPs (GPTBot, ClaudeBot, PerplexityBot) in Cloudflare security settings.</p>
+                                
+                                <div>
+                                    <span style="font-family: var(--font-mono); font-size: 9px; font-weight: 800; color: #2e7d32; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 10px;">✅ What's Already Good</span>
+                                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                                        <div class="strength-item">
+                                            <span class="strength-icon">✓</span>
+                                            <div>
+                                                <strong style="font-size: 12.5px;">Robots.txt</strong>
+                                                <div style="font-size: 11px; color: #666; margin-top: 1px;">Solid configuration; AI indexer crawlers are not blocked.</div>
+                                            </div>
+                                        </div>
+                                        <div class="strength-item">
+                                            <span class="strength-icon">✓</span>
+                                            <div>
+                                                <strong style="font-size: 12.5px;">llms.txt</strong>
+                                                <div style="font-size: 11px; color: #666; margin-top: 1px;">Present and reasonably built out for scrapers.</div>
+                                            </div>
+                                        </div>
+                                        <div class="strength-item">
+                                            <span class="strength-icon">✓</span>
+                                            <div>
+                                                <strong style="font-size: 12.5px;">Baseline Signals</strong>
+                                                <div style="font-size: 11px; color: #666; margin-top: 1px;">Core discovery vectors are online.</div>
+                                            </div>
+                                        </div>
+                                        <div class="strength-item">
+                                            <span class="strength-icon">✓</span>
+                                            <div>
+                                                <strong style="font-size: 12.5px;">Brand &amp; Entity</strong>
+                                                <div style="font-size: 11px; color: #666; margin-top: 1px;">Entity nodes are weak but non-zero.</div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <!-- Card 5 -->
-                            <div class="audit-card">
-                                <div class="audit-card-num">05 / LINK PATHWAYS</div>
-                                <h3 class="audit-card-title">Crawl Architecture</h3>
-                                <div class="audit-section-block">
-                                    <span class="audit-badge-problem">The Problem</span>
-                                    <p class="audit-text">Shallow navigation pathways and isolated collections prevent search crawler bots from deep-crawling sub-catalogs.</p>
+                            
+                            <!-- Main Cards Grid (5 Cards) -->
+                            <div class="audit-cards-container" id="auditCardsGrid">
+                                <!-- Card 1 (Schema) - spans 2 columns -->
+                                <div class="audit-card state-problem" style="grid-column: span 2;">
+                                    <div style="display: flex; justify-content: space-between; align-items: start; width: 100%;">
+                                        <div class="audit-card-num">01 / SCHEMA JSON-LD</div>
+                                        <span style="font-family: var(--font-mono); font-size: 8px; font-weight: 800; background: var(--bg-red); color: white; padding: 2px 6px; border-radius: 4px; letter-spacing: 0.5px;">#1 PRIORITY</span>
+                                    </div>
+                                    <h3 class="audit-card-title">Structured Data Markup</h3>
+                                    <div class="audit-card-content problem-text">
+                                        No structured data of any kind found on the site. Giftech is starting from zero here, making it completely invisible to AI search engine Knowledge Graph nodes.
+                                    </div>
+                                    <div class="audit-card-content solution-text" style="display: none; color: #2e7d32;">
+                                        Add WebSite schema, Organization schema (name, url, logo), FAQPage schema with real FAQs, sameAs links (Wikipedia/Wikidata/LinkedIn/Crunchbase) for entity disambiguation, and address/telephone/contactPoint in the Organization schema.
+                                    </div>
+                                    <div class="card-toggle-tabs">
+                                        <button class="toggle-tab-btn active-problem" data-tab="problem">PROBLEM</button>
+                                        <button class="toggle-tab-btn" data-tab="solution">SOLUTION</button>
+                                    </div>
                                 </div>
-                                <div class="audit-section-block" style="margin-top: auto;">
-                                    <span class="audit-badge-solution">The Solution</span>
-                                    <p class="audit-text">Establish clean nested category structures and contextual internal link chains to guide crawler trajectories.</p>
+                                
+                                <!-- Card 2 (AI Discovery) -->
+                                <div class="audit-card state-problem">
+                                    <div class="audit-card-num">02 / AI DISCOVERY</div>
+                                    <h3 class="audit-card-title">Indexer Files</h3>
+                                    <div class="audit-card-content problem-text">
+                                        No dedicated AI-discovery files exist on the server, blocking indexers from parsing structured site summaries.
+                                    </div>
+                                    <div class="audit-card-content solution-text" style="display: none; color: #2e7d32;">
+                                        Create /.well-known/ai.txt, /ai/summary.json, /ai/faq.json, /ai/service.json, and add an RSS/Atom feed linked in the site's HTML &lt;head&gt;.
+                                    </div>
+                                    <div class="card-toggle-tabs">
+                                        <button class="toggle-tab-btn active-problem" data-tab="problem">PROBLEM</button>
+                                        <button class="toggle-tab-btn" data-tab="solution">SOLUTION</button>
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- Card 6 -->
-                            <div class="audit-card">
-                                <div class="audit-card-num">06 / TEMPORAL DECAY</div>
-                                <h3 class="audit-card-title">Content Freshness</h3>
-                                <div class="audit-section-block">
-                                    <span class="audit-badge-problem">The Problem</span>
-                                    <p class="audit-text">Hardcoding current year references (e.g. '2026') flags content as obsolete in search engine freshness filters over time.</p>
+                                
+                                <!-- Card 3 (Meta Tags) -->
+                                <div class="audit-card state-problem">
+                                    <div class="audit-card-num">03 / META TAGS</div>
+                                    <h3 class="audit-card-title">Meta Descriptions</h3>
+                                    <div class="audit-card-content problem-text">
+                                        Meta description is missing or not optimized (needs to be 150–160 characters to prevent truncation in search result snippets).
+                                    </div>
+                                    <div class="audit-card-content solution-text" style="display: none; color: #2e7d32;">
+                                        Write a unique, keyword-relevant 150–160 character meta description containing specific B2B conversion keywords.
+                                    </div>
+                                    <div class="card-toggle-tabs">
+                                        <button class="toggle-tab-btn active-problem" data-tab="problem">PROBLEM</button>
+                                        <button class="toggle-tab-btn" data-tab="solution">SOLUTION</button>
+                                    </div>
                                 </div>
-                                <div class="audit-section-block" style="margin-top: auto;">
-                                    <span class="audit-badge-solution">The Solution</span>
-                                    <p class="audit-text">Deploy dynamic date scripts in headings to maintain organic search freshness indicators automatically.</p>
+                                
+                                <!-- Card 4 (Content Quality) -->
+                                <div class="audit-card state-problem">
+                                    <div class="audit-card-num">04 / CONTENT QUALITY</div>
+                                    <h3 class="audit-card-title">Keyword Density</h3>
+                                    <div class="audit-card-content problem-text">
+                                        Keyword stuffing detected — "gifts" sits at 4.2% density, triggering ranking penalties; single clear H1 heading not confirmed.
+                                    </div>
+                                    <div class="audit-card-content solution-text" style="display: none; color: #2e7d32;">
+                                        Diversify vocabulary around the "gifts" keyword; ensure exactly one clear, topic-stating H1 heading is configured on the homepage.
+                                    </div>
+                                    <div class="card-toggle-tabs">
+                                        <button class="toggle-tab-btn active-problem" data-tab="problem">PROBLEM</button>
+                                        <button class="toggle-tab-btn" data-tab="solution">SOLUTION</button>
+                                    </div>
+                                </div>
+                                
+                                <!-- Card 5 (Brand & Entity) -->
+                                <div class="audit-card state-problem">
+                                    <div class="audit-card-num">05 / BRAND &amp; ENTITY</div>
+                                    <h3 class="audit-card-title">Entity Verification</h3>
+                                    <div class="audit-card-content problem-text">
+                                        No sameAs entity links, no address/contact schema, causing weak overall brand disambiguation signals for AI engines.
+                                    </div>
+                                    <div class="audit-card-content solution-text" style="display: none; color: #2e7d32;">
+                                        Deploy Organization schema with sameAs links pointing to Wikidata/Wikipedia plus verified contactPoint declarations.
+                                    </div>
+                                    <div class="card-toggle-tabs">
+                                        <button class="toggle-tab-btn active-problem" data-tab="problem">PROBLEM</button>
+                                        <button class="toggle-tab-btn" data-tab="solution">SOLUTION</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -2659,8 +2771,8 @@
 </div>
 </div>
 <div class="speaker-notes" style="display: none;">
-<p><strong>Slide 12 Speaker Notes:</strong></p>
-<p>"Standard search bots and LLM scrapers look for structured data arrays rather than loose paragraphs. Here is our direct evaluation of Giftech's machine readability metrics. Schema markups score 10%, AI citation rate is only 8%, and machine readability sits at 20% because spreadsheet tables are uploaded as flat image blocks."</p>
+<p><strong>Slide 11 Speaker Notes:</strong></p>
+<p>"Let's look at the B2B audit matrix. Since Giftech is early stage in schema setup, it starts from zero on structured JSON-LD schemas, but Robots.txt and LLMs.txt are solid. By toggling each card, we can inspect the exact technical problems and the solutions we will inject to fix them."</p>
 </div>
 </section>
 <!-- ===========================================
@@ -4008,6 +4120,9 @@
                 
                 // Slide 16 D2C Customer Journey Flowchart
                 this.setupSlide16CustomerJourney();
+
+                // Slide 11 Audit Matrix Toggles
+                this.setupSlide11AuditMatrix();
             }
 
             setupSlide16CustomerJourney() {
@@ -4094,6 +4209,101 @@
                         }
                     });
                 });
+            }
+
+            setupSlide11AuditMatrix() {
+                const cards = document.querySelectorAll('#auditCardsGrid .audit-card');
+                const btnShowAllGaps = document.getElementById('btnShowAllGaps');
+                const btnShowAllSolutions = document.getElementById('btnShowAllSolutions');
+
+                const setCardState = (card, state) => {
+                    const probText = card.querySelector('.problem-text');
+                    const solText = card.querySelector('.solution-text');
+                    const probBtn = card.querySelector('[data-tab="problem"]');
+                    const solBtn = card.querySelector('[data-tab="solution"]');
+
+                    if (state === 'problem') {
+                        card.classList.add('state-problem');
+                        card.classList.remove('state-solution');
+                        if (probText) probText.style.display = 'block';
+                        if (solText) solText.style.display = 'none';
+                        if (probBtn) probBtn.classList.add('active-problem');
+                        if (solBtn) solBtn.classList.remove('active-solution');
+                    } else {
+                        card.classList.remove('state-problem');
+                        card.classList.add('state-solution');
+                        if (probText) probText.style.display = 'none';
+                        if (solText) solText.style.display = 'block';
+                        if (probBtn) probBtn.classList.remove('active-problem');
+                        if (solBtn) solBtn.classList.add('active-solution');
+                    }
+                };
+
+                cards.forEach(card => {
+                    const tabs = card.querySelectorAll('.toggle-tab-btn');
+                    tabs.forEach(tab => {
+                        tab.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            const target = tab.getAttribute('data-tab');
+                            setCardState(card, target);
+
+                            // Sync global button styles depending on overall state
+                            let allProblems = true;
+                            let allSolutions = true;
+                            cards.forEach(c => {
+                                if (c.classList.contains('state-problem')) allSolutions = false;
+                                else allProblems = false;
+                            });
+
+                            if (btnShowAllGaps && btnShowAllSolutions) {
+                                if (allProblems) {
+                                    btnShowAllGaps.style.background = '#ffebee';
+                                    btnShowAllGaps.style.color = '#c62828';
+                                    btnShowAllGaps.style.borderColor = '#c62828';
+                                    btnShowAllSolutions.style.background = '#fff';
+                                    btnShowAllSolutions.style.color = '#666';
+                                    btnShowAllSolutions.style.borderColor = '#ccc';
+                                } else if (allSolutions) {
+                                    btnShowAllSolutions.style.background = '#e8f5e9';
+                                    btnShowAllSolutions.style.color = '#2e7d32';
+                                    btnShowAllSolutions.style.borderColor = '#2e7d32';
+                                    btnShowAllGaps.style.background = '#fff';
+                                    btnShowAllGaps.style.color = '#666';
+                                    btnShowAllGaps.style.borderColor = '#ccc';
+                                } else {
+                                    btnShowAllGaps.style.background = '#fff';
+                                    btnShowAllGaps.style.color = '#666';
+                                    btnShowAllGaps.style.borderColor = '#ccc';
+                                    btnShowAllSolutions.style.background = '#fff';
+                                    btnShowAllSolutions.style.color = '#666';
+                                    btnShowAllSolutions.style.borderColor = '#ccc';
+                                }
+                            }
+                        });
+                    });
+                });
+
+                if (btnShowAllGaps && btnShowAllSolutions) {
+                    btnShowAllGaps.addEventListener('click', () => {
+                        cards.forEach(c => setCardState(c, 'problem'));
+                        btnShowAllGaps.style.background = '#ffebee';
+                        btnShowAllGaps.style.color = '#c62828';
+                        btnShowAllGaps.style.borderColor = '#c62828';
+                        btnShowAllSolutions.style.background = '#fff';
+                        btnShowAllSolutions.style.color = '#666';
+                        btnShowAllSolutions.style.borderColor = '#ccc';
+                    });
+
+                    btnShowAllSolutions.addEventListener('click', () => {
+                        cards.forEach(c => setCardState(c, 'solution'));
+                        btnShowAllSolutions.style.background = '#e8f5e9';
+                        btnShowAllSolutions.style.color = '#2e7d32';
+                        btnShowAllSolutions.style.borderColor = '#2e7d32';
+                        btnShowAllGaps.style.background = '#fff';
+                        btnShowAllGaps.style.color = '#666';
+                        btnShowAllGaps.style.borderColor = '#ccc';
+                    });
+                }
             }
 
             setupSlide6DecayLoop() {
