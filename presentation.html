@@ -1707,6 +1707,54 @@
         }
 
         /* ===========================================
+           SLIDE 11: SEO & AI READINESS SCORECARD STYLING
+           =========================================== */
+        .score-card {
+            border: 2px solid #e0e0e0 !important;
+            transition: all 0.4s var(--ease-out-expo) !important;
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 200px;
+            position: relative;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+        .score-card:hover {
+            border-color: #ff3300 !important;
+            box-shadow: 0 15px 35px rgba(255, 51, 0, 0.1) !important;
+            transform: translateY(-2px);
+        }
+        .score-card-fill {
+            background: var(--bg-red);
+            transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease;
+        }
+        .score-card.state-missing {
+            border: 2px dashed var(--bg-red) !important;
+            background: #fffcfb;
+        }
+        .score-card.state-optimized {
+            border: 2px solid #2e7d32 !important;
+            background: #fcfdfc;
+            box-shadow: 0 15px 35px rgba(46, 125, 50, 0.08) !important;
+        }
+        .score-card.state-optimized .score-card-pct {
+            color: #2e7d32 !important;
+        }
+        .score-card.state-optimized .score-card-fill {
+            background: #2e7d32 !important;
+        }
+        .score-card.state-optimized .score-card-title {
+            color: #2e7d32 !important;
+        }
+        .score-card.state-optimized .score-card-action {
+            color: #2e7d32 !important;
+        }
+
+        /* ===========================================
            SLIDE 13: HORIZONTAL FLOWCHART STYLING
            =========================================== */
         .audit-flowchart-container {
@@ -2497,68 +2545,112 @@
 </div>
 <div class="slide-number-top">11</div>
 </div>
-<div class="slide-body">
-<div class="grid-2col reveal" style="gap: 80px;">
-<div>
-<div class="scorecard-item">
-<div class="scorecard-label-row">
-<span>Technical SEO Score</span>
-<span>58%</span>
-</div>
-<div class="scorecard-meter">
-<div class="scorecard-fill" style="--percent: 58%; width: 58%;"></div>
-</div>
-</div>
-<div class="scorecard-item">
-<div class="scorecard-label-row">
-<span>JSON-LD Organization Schema</span>
-<span style="color: var(--text-red);">10%</span>
-</div>
-<div class="scorecard-meter">
-<div class="scorecard-fill critical" style="--percent: 10%; width: 10%;"></div>
-</div>
-</div>
-<div class="scorecard-item">
-<div class="scorecard-label-row">
-<span>AI Citations (ChatGPT/Perplexity)</span>
-<span style="color: var(--text-red);">08%</span>
-</div>
-<div class="scorecard-meter">
-<div class="scorecard-fill critical" style="--percent: 8%; width: 8%;"></div>
-</div>
-</div>
-</div>
-<div>
-<div class="scorecard-item">
-<div class="scorecard-label-row">
-<span>Brand Graph Entity Match</span>
-<span style="color: var(--text-red);">15%</span>
-</div>
-<div class="scorecard-meter">
-<div class="scorecard-fill critical" style="--percent: 15%; width: 15%;"></div>
-</div>
-</div>
-<div class="scorecard-item">
-<div class="scorecard-label-row">
-<span>Catalog Internal Link Paths</span>
-<span>42%</span>
-</div>
-<div class="scorecard-meter">
-<div class="scorecard-fill" style="--percent: 42%; width: 42%;"></div>
-</div>
-</div>
-<div class="scorecard-item">
-<div class="scorecard-label-row">
-<span>Machine-Readable Data Tables</span>
-<span style="color: var(--text-red);">20%</span>
-</div>
-<div class="scorecard-meter">
-<div class="scorecard-fill critical" style="--percent: 20%; width: 20%;"></div>
-</div>
-</div>
-</div>
-</div>
-</div>
+                    <div class="slide-body" style="height: calc(100% - 150px); margin-top: 15px;">
+                        <div id="scorecardCardsGrid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: 100%; box-sizing: border-box;">
+                            <!-- Card 1 -->
+                            <div class="score-card swiss-card" data-metric-index="0">
+                                <div style="display: flex; justify-content: space-between; align-items: start; width: 100%; margin-bottom: 8px;">
+                                    <span class="score-card-title" style="font-family: var(--font-display); font-size: 15px; font-weight: 800;">Technical SEO Score</span>
+                                    <span class="score-card-pct" style="font-family: var(--font-mono); font-size: 14px; font-weight: 800; color: var(--text-dark);">58%</span>
+                                </div>
+                                <div style="width: 100%; height: 8px; background: #e0e0e0; border-radius: 4px; overflow: hidden; margin-bottom: 12px; position: relative;">
+                                    <div class="score-card-fill" style="width: 58%; height: 100%;"></div>
+                                </div>
+                                <div class="score-card-status" style="font-size: 13px; line-height: 1.45; color: #666; margin-bottom: 15px; text-align: left;">
+                                    <span style="font-weight: 800; color: #000; text-transform: uppercase; font-size: 9px; font-family: var(--font-mono); letter-spacing: 0.5px; display: block; margin-bottom: 4px;">BASELINE AUDIT</span>
+                                    Click to inspect gaps
+                                </div>
+                                <div class="score-card-action" style="font-family: var(--font-mono); font-size: 9px; font-weight: 800; color: #888; text-transform: uppercase; margin-top: auto; text-align: right; width: 100%;">
+                                    inspect gap
+                                </div>
+                            </div>
+                            <!-- Card 2 -->
+                            <div class="score-card swiss-card" data-metric-index="1">
+                                <div style="display: flex; justify-content: space-between; align-items: start; width: 100%; margin-bottom: 8px;">
+                                    <span class="score-card-title" style="font-family: var(--font-display); font-size: 15px; font-weight: 800;">JSON-LD Organization Schema</span>
+                                    <span class="score-card-pct" style="font-family: var(--font-mono); font-size: 14px; font-weight: 800; color: var(--text-red);">10%</span>
+                                </div>
+                                <div style="width: 100%; height: 8px; background: #e0e0e0; border-radius: 4px; overflow: hidden; margin-bottom: 12px; position: relative;">
+                                    <div class="score-card-fill" style="width: 10%; height: 100%; background: var(--bg-red);"></div>
+                                </div>
+                                <div class="score-card-status" style="font-size: 13px; line-height: 1.45; color: #666; margin-bottom: 15px; text-align: left;">
+                                    <span style="font-weight: 800; color: #000; text-transform: uppercase; font-size: 9px; font-family: var(--font-mono); letter-spacing: 0.5px; display: block; margin-bottom: 4px;">BASELINE AUDIT</span>
+                                    Click to inspect gaps
+                                </div>
+                                <div class="score-card-action" style="font-family: var(--font-mono); font-size: 9px; font-weight: 800; color: #888; text-transform: uppercase; margin-top: auto; text-align: right; width: 100%;">
+                                    inspect gap
+                                </div>
+                            </div>
+                            <!-- Card 3 -->
+                            <div class="score-card swiss-card" data-metric-index="2">
+                                <div style="display: flex; justify-content: space-between; align-items: start; width: 100%; margin-bottom: 8px;">
+                                    <span class="score-card-title" style="font-family: var(--font-display); font-size: 15px; font-weight: 800;">AI Citations (ChatGPT/Perplexity)</span>
+                                    <span class="score-card-pct" style="font-family: var(--font-mono); font-size: 14px; font-weight: 800; color: var(--text-red);">08%</span>
+                                </div>
+                                <div style="width: 100%; height: 8px; background: #e0e0e0; border-radius: 4px; overflow: hidden; margin-bottom: 12px; position: relative;">
+                                    <div class="score-card-fill" style="width: 8%; height: 100%; background: var(--bg-red);"></div>
+                                </div>
+                                <div class="score-card-status" style="font-size: 13px; line-height: 1.45; color: #666; margin-bottom: 15px; text-align: left;">
+                                    <span style="font-weight: 800; color: #000; text-transform: uppercase; font-size: 9px; font-family: var(--font-mono); letter-spacing: 0.5px; display: block; margin-bottom: 4px;">BASELINE AUDIT</span>
+                                    Click to inspect gaps
+                                </div>
+                                <div class="score-card-action" style="font-family: var(--font-mono); font-size: 9px; font-weight: 800; color: #888; text-transform: uppercase; margin-top: auto; text-align: right; width: 100%;">
+                                    inspect gap
+                                </div>
+                            </div>
+                            <!-- Card 4 -->
+                            <div class="score-card swiss-card" data-metric-index="3">
+                                <div style="display: flex; justify-content: space-between; align-items: start; width: 100%; margin-bottom: 8px;">
+                                    <span class="score-card-title" style="font-family: var(--font-display); font-size: 15px; font-weight: 800;">Brand Graph Entity Match</span>
+                                    <span class="score-card-pct" style="font-family: var(--font-mono); font-size: 14px; font-weight: 800; color: var(--text-red);">15%</span>
+                                </div>
+                                <div style="width: 100%; height: 8px; background: #e0e0e0; border-radius: 4px; overflow: hidden; margin-bottom: 12px; position: relative;">
+                                    <div class="score-card-fill" style="width: 15%; height: 100%; background: var(--bg-red);"></div>
+                                </div>
+                                <div class="score-card-status" style="font-size: 13px; line-height: 1.45; color: #666; margin-bottom: 15px; text-align: left;">
+                                    <span style="font-weight: 800; color: #000; text-transform: uppercase; font-size: 9px; font-family: var(--font-mono); letter-spacing: 0.5px; display: block; margin-bottom: 4px;">BASELINE AUDIT</span>
+                                    Click to inspect gaps
+                                </div>
+                                <div class="score-card-action" style="font-family: var(--font-mono); font-size: 9px; font-weight: 800; color: #888; text-transform: uppercase; margin-top: auto; text-align: right; width: 100%;">
+                                    inspect gap
+                                </div>
+                            </div>
+                            <!-- Card 5 -->
+                            <div class="score-card swiss-card" data-metric-index="4">
+                                <div style="display: flex; justify-content: space-between; align-items: start; width: 100%; margin-bottom: 8px;">
+                                    <span class="score-card-title" style="font-family: var(--font-display); font-size: 15px; font-weight: 800;">Catalog Internal Link Paths</span>
+                                    <span class="score-card-pct" style="font-family: var(--font-mono); font-size: 14px; font-weight: 800; color: var(--text-dark);">42%</span>
+                                </div>
+                                <div style="width: 100%; height: 8px; background: #e0e0e0; border-radius: 4px; overflow: hidden; margin-bottom: 12px; position: relative;">
+                                    <div class="score-card-fill" style="width: 42%; height: 100%;"></div>
+                                </div>
+                                <div class="score-card-status" style="font-size: 13px; line-height: 1.45; color: #666; margin-bottom: 15px; text-align: left;">
+                                    <span style="font-weight: 800; color: #000; text-transform: uppercase; font-size: 9px; font-family: var(--font-mono); letter-spacing: 0.5px; display: block; margin-bottom: 4px;">BASELINE AUDIT</span>
+                                    Click to inspect gaps
+                                </div>
+                                <div class="score-card-action" style="font-family: var(--font-mono); font-size: 9px; font-weight: 800; color: #888; text-transform: uppercase; margin-top: auto; text-align: right; width: 100%;">
+                                    inspect gap
+                                </div>
+                            </div>
+                            <!-- Card 6 -->
+                            <div class="score-card swiss-card" data-metric-index="5">
+                                <div style="display: flex; justify-content: space-between; align-items: start; width: 100%; margin-bottom: 8px;">
+                                    <span class="score-card-title" style="font-family: var(--font-display); font-size: 15px; font-weight: 800;">Machine-Readable Data Tables</span>
+                                    <span class="score-card-pct" style="font-family: var(--font-mono); font-size: 14px; font-weight: 800; color: var(--text-red);">20%</span>
+                                </div>
+                                <div style="width: 100%; height: 8px; background: #e0e0e0; border-radius: 4px; overflow: hidden; margin-bottom: 12px; position: relative;">
+                                    <div class="score-card-fill" style="width: 20%; height: 100%; background: var(--bg-red);"></div>
+                                </div>
+                                <div class="score-card-status" style="font-size: 13px; line-height: 1.45; color: #666; margin-bottom: 15px; text-align: left;">
+                                    <span style="font-weight: 800; color: #000; text-transform: uppercase; font-size: 9px; font-family: var(--font-mono); letter-spacing: 0.5px; display: block; margin-bottom: 4px;">BASELINE AUDIT</span>
+                                    Click to inspect gaps
+                                </div>
+                                <div class="score-card-action" style="font-family: var(--font-mono); font-size: 9px; font-weight: 800; color: #888; text-transform: uppercase; margin-top: auto; text-align: right; width: 100%;">
+                                    inspect gap
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 <div class="slide-footer">
 <span>COMPOSITE B2B READINESS SCORE: POOR (32/100)</span>
 <span>ONDIGI SOLUTIONS</span>
@@ -3914,6 +4006,9 @@
                 
                 // Slide 16 D2C Customer Journey Flowchart
                 this.setupSlide16CustomerJourney();
+                
+                // Slide 11 Interactive B2B Scorecard Gaps & Optimization
+                this.setupSlide11Scorecard();
             }
 
             setupSlide16CustomerJourney() {
@@ -3997,6 +4092,137 @@
                         }
                         if (textInput) {
                             textInput.value = msgTemplates[theme];
+                        }
+                    });
+                });
+            }
+
+            setupSlide11Scorecard() {
+                const cards = document.querySelectorAll('#scorecardCardsGrid .score-card');
+                if (cards.length === 0) return;
+
+                const metricData = [
+                    {
+                        title: "Technical SEO Score",
+                        baseline: "58%",
+                        baselinePct: 58,
+                        missing: "No custom canonical routing configured; robot scrapers blocked by standard Shopify firewall rules.",
+                        optimized: "Canonical routes mapped and Cloudflare CDN whitelists active. Crawl errors down to 0%."
+                    },
+                    {
+                        title: "JSON-LD Organization Schema",
+                        baseline: "10%",
+                        baselinePct: 10,
+                        missing: "No organization structure, website details, or local schema tags found. AI crawlers fail to read brand nodes.",
+                        optimized: "Injected Organization, WebSite & FAQ JSON-LD schemas. Verified by Google Schema Val."
+                    },
+                    {
+                        title: "AI Citations (ChatGPT/Perplexity)",
+                        baseline: "08%",
+                        baselinePct: 8,
+                        missing: "Introductory value statements buried. AI agents summarize competitors and skip our pages.",
+                        optimized: "Value proposition written in BLUF model. Conversational LLMs reference Giftech in top B2B queries."
+                    },
+                    {
+                        title: "Brand Graph Entity Match",
+                        baseline: "15%",
+                        baselinePct: 15,
+                        missing: "Unlinked brand reference nodes on external platforms. Poor semantic authority match.",
+                        optimized: "Mapped key entities in corporate knowledge graphs, reinforcing authority on B2B target products."
+                    },
+                    {
+                        title: "Catalog Internal Link Paths",
+                        baseline: "42%",
+                        baselinePct: 42,
+                        missing: "Flat links and broken loops prevent deep crawling of bulk product catalogs by bots.",
+                        optimized: "Configured deep nested catalogs and dynamic internal menus. Crawl coverage increased to 100%."
+                    },
+                    {
+                        title: "Machine-Readable Data Tables",
+                        baseline: "20%",
+                        baselinePct: 20,
+                        missing: "Bulk pricing grids and custom specifications are locked in flat text bullets. Un-parseable by RAG systems.",
+                        optimized: "Converted all bullet specifications into semantic HTML tables, lifting AI search matching rates."
+                    }
+                ];
+
+                cards.forEach(card => {
+                    const idx = parseInt(card.getAttribute('data-metric-index'));
+                    const data = metricData[idx];
+                    
+                    // Initial state is 'baseline'
+                    card.setAttribute('data-state', 'baseline');
+
+                    card.addEventListener('click', () => {
+                        const state = card.getAttribute('data-state');
+                        const pctSpan = card.querySelector('.score-card-pct');
+                        const fillBar = card.querySelector('.score-card-fill');
+                        const statusBox = card.querySelector('.score-card-status');
+                        const actionText = card.querySelector('.score-card-action');
+
+                        if (state === 'baseline') {
+                            // Transition to 'missing'
+                            card.setAttribute('data-state', 'missing');
+                            card.classList.add('state-missing');
+                            card.classList.remove('state-optimized');
+
+                            if (pctSpan) {
+                                pctSpan.textContent = data.baseline;
+                                pctSpan.style.color = "var(--text-red)";
+                            }
+                            if (fillBar) {
+                                fillBar.style.width = data.baselinePct + '%';
+                                fillBar.style.backgroundColor = "var(--bg-red)";
+                            }
+                            if (statusBox) {
+                                statusBox.innerHTML = `<span style="font-weight: 800; color: var(--text-red); text-transform: uppercase; font-size: 9px; font-family: var(--font-mono); letter-spacing: 0.5px; display: block; margin-bottom: 4px;">AUDIT FINDING (MISSING)</span>${data.missing}`;
+                            }
+                            if (actionText) {
+                                actionText.textContent = "click to optimize";
+                                actionText.style.color = "var(--text-red)";
+                            }
+                        } else if (state === 'missing') {
+                            // Transition to 'optimized'
+                            card.setAttribute('data-state', 'optimized');
+                            card.classList.remove('state-missing');
+                            card.classList.add('state-optimized');
+
+                            if (pctSpan) {
+                                pctSpan.textContent = "100%";
+                                pctSpan.style.color = "#2e7d32";
+                            }
+                            if (fillBar) {
+                                fillBar.style.width = '100%';
+                                fillBar.style.backgroundColor = '#2e7d32';
+                            }
+                            if (statusBox) {
+                                statusBox.innerHTML = `<span style="font-weight: 800; color: #2e7d32; text-transform: uppercase; font-size: 9px; font-family: var(--font-mono); letter-spacing: 0.5px; display: block; margin-bottom: 4px;">OPTIMIZED RESOLUTION</span>${data.optimized}`;
+                            }
+                            if (actionText) {
+                                actionText.textContent = "reset demo";
+                                actionText.style.color = "#2e7d32";
+                            }
+                        } else {
+                            // Reset back to 'baseline'
+                            card.setAttribute('data-state', 'baseline');
+                            card.classList.remove('state-missing');
+                            card.classList.remove('state-optimized');
+
+                            if (pctSpan) {
+                                pctSpan.textContent = data.baseline;
+                                pctSpan.style.color = (data.baselinePct <= 20) ? "var(--text-red)" : "var(--text-dark)";
+                            }
+                            if (fillBar) {
+                                fillBar.style.width = data.baselinePct + '%';
+                                fillBar.style.backgroundColor = (data.baselinePct <= 20) ? "var(--bg-red)" : "var(--bg-dark)";
+                            }
+                            if (statusBox) {
+                                statusBox.innerHTML = `<span style="font-weight: 800; color: #000; text-transform: uppercase; font-size: 9px; font-family: var(--font-mono); letter-spacing: 0.5px; display: block; margin-bottom: 4px;">BASELINE AUDIT</span>Click to inspect gaps`;
+                            }
+                            if (actionText) {
+                                actionText.textContent = "inspect gap";
+                                actionText.style.color = "#888";
+                            }
                         }
                     });
                 });
