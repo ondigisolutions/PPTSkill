@@ -1839,6 +1839,62 @@
         }
 
         /* ===========================================
+           SLIDE 17: SEO & AI D2C AUDIT TABLE STYLING
+           =========================================== */
+        .audit-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            box-sizing: border-box;
+        }
+        .audit-table th {
+            font-family: var(--font-display);
+            font-size: 13.5px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 12px 16px;
+            border-bottom: 2px solid #000000;
+            color: #000000;
+        }
+        .audit-table td {
+            font-size: 15px;
+            line-height: 1.45;
+            padding: 14px 16px;
+            border-bottom: 1px solid #e0e0e0;
+            vertical-align: top;
+            color: #333333;
+        }
+        .audit-table tr:last-child td {
+            border-bottom: none;
+        }
+        .audit-table tr:hover td {
+            background: rgba(0, 0, 0, 0.01);
+        }
+        .priority-badge {
+            font-family: var(--font-mono);
+            font-size: 9px;
+            font-weight: 800;
+            padding: 3px 6px;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+            display: inline-block;
+            text-transform: uppercase;
+            color: white;
+            margin-top: 4px;
+            text-align: center;
+        }
+        .priority-high {
+            background: #c62828;
+        }
+        .priority-medium {
+            background: #e65100;
+        }
+        .priority-low {
+            background: #2e7d32;
+        }
+
+        /* ===========================================
            SLIDE 13: HORIZONTAL FLOWCHART STYLING
            =========================================== */
         .audit-flowchart-container {
@@ -3330,102 +3386,59 @@
                                 </div>
                             </div>
                             
-                            <!-- Main Cards Grid (5 Cards) -->
-                            <div class="audit-cards-container" id="auditCardsGridD2C">
-                                <!-- Card 1 (Schema) - spans 2 columns -->
-                                <div class="audit-card state-problem" style="grid-column: span 2;">
-                                    <div style="display: flex; justify-content: space-between; align-items: start; width: 100%;">
-                                        <div class="audit-card-num">01 / STRUCTURED DATA</div>
-                                        <span style="font-family: var(--font-mono); font-size: 8px; font-weight: 800; background: var(--bg-red); color: white; padding: 2px 6px; border-radius: 4px; letter-spacing: 0.5px;">HIGH PRIORITY</span>
-                                    </div>
-                                    <h3 class="audit-card-title">Missing Schema Markup</h3>
-                                    <div class="audit-card-content problem-text">
-                                        Missing structured data (Schema) on products, organization, and FAQs, preventing Google & AI engines from understanding the business entity.
-                                    </div>
-                                    <div class="audit-card-content solution-text" style="display: none; color: #2e7d32;">
-                                        Inject rich JSON-LD Product, Organization, and FAQPage schemas to showcase products and store info directly in AI-powered search layouts.
-                                    </div>
-                                    <div class="card-toggle-tabs">
-                                        <button class="toggle-tab-btn active-problem" data-tab="problem">PROBLEM</button>
-                                        <button class="toggle-tab-btn" data-tab="solution">SOLUTION</button>
-                                    </div>
-                                </div>
-                                
-                                <!-- Card 2 (Content Verification) -->
-                                <div class="audit-card state-problem">
-                                    <div style="display: flex; justify-content: space-between; align-items: start; width: 100%;">
-                                        <div class="audit-card-num">02 / CONTENT VERIFICATION</div>
-                                        <span style="font-family: var(--font-mono); font-size: 8px; font-weight: 800; background: var(--bg-red); color: white; padding: 2px 6px; border-radius: 4px; letter-spacing: 0.5px;">HIGH PRIORITY</span>
-                                    </div>
-                                    <h3 class="audit-card-title">Author &amp; Date Info</h3>
-                                    <div class="audit-card-content problem-text">
-                                        No author or date verification info on site content. Hardcoded temporal references (e.g. "2026") trigger content decay and trust warnings.
-                                    </div>
-                                    <div class="audit-card-content solution-text" style="display: none; color: #2e7d32;">
-                                        Integrate verified author profiles, clear date timestamps, and dynamic content freshness scripts to keep product catalogs evergreen.
-                                    </div>
-                                    <div class="card-toggle-tabs">
-                                        <button class="toggle-tab-btn active-problem" data-tab="problem">PROBLEM</button>
-                                        <button class="toggle-tab-btn" data-tab="solution">SOLUTION</button>
-                                    </div>
-                                </div>
-                                
-                                <!-- Card 3 (Page Load Speed) -->
-                                <div class="audit-card state-problem">
-                                    <div style="display: flex; justify-content: space-between; align-items: start; width: 100%;">
-                                        <div class="audit-card-num">03 / WEB PERFORMANCE</div>
-                                        <span style="font-family: var(--font-mono); font-size: 8px; font-weight: 800; background: #e65100; color: white; padding: 2px 6px; border-radius: 4px; letter-spacing: 0.5px;">MEDIUM PRIORITY</span>
-                                    </div>
-                                    <h3 class="audit-card-title">Page Load Speed</h3>
-                                    <div class="audit-card-content problem-text">
-                                        Large file sizes (heavy unoptimized media files) slow down page loads, dragging down Core Web Vitals speed indexes.
-                                    </div>
-                                    <div class="audit-card-content solution-text" style="display: none; color: #2e7d32;">
-                                        Deploy automated next-gen image compression, lazy load assets, and optimize headless React bundle sizes to maximize ranking capability.
-                                    </div>
-                                    <div class="card-toggle-tabs">
-                                        <button class="toggle-tab-btn active-problem" data-tab="problem">PROBLEM</button>
-                                        <button class="toggle-tab-btn" data-tab="solution">SOLUTION</button>
-                                    </div>
-                                </div>
-                                
-                                <!-- Card 4 (AI Discovery Files) -->
-                                <div class="audit-card state-problem">
-                                    <div style="display: flex; justify-content: space-between; align-items: start; width: 100%;">
-                                        <div class="audit-card-num">04 / CRAWLER INDEXING</div>
-                                        <span style="font-family: var(--font-mono); font-size: 8px; font-weight: 800; background: #e65100; color: white; padding: 2px 6px; border-radius: 4px; letter-spacing: 0.5px;">MEDIUM PRIORITY</span>
-                                    </div>
-                                    <h3 class="audit-card-title">AI Discovery Files</h3>
-                                    <div class="audit-card-content problem-text">
-                                        Missing "AI discovery" files (like ai.txt or summary.json) on the web server, limiting indexing transparency.
-                                    </div>
-                                    <div class="audit-card-content solution-text" style="display: none; color: #2e7d32;">
-                                        Deploy /.well-known/ai.txt, /ai/summary.json, /ai/faq.json, /ai/service.json, and link RSS/Atom feeds in &lt;head&gt;.
-                                    </div>
-                                    <div class="card-toggle-tabs">
-                                        <button class="toggle-tab-btn active-problem" data-tab="problem">PROBLEM</button>
-                                        <button class="toggle-tab-btn" data-tab="solution">SOLUTION</button>
-                                    </div>
-                                </div>
-                                
-                                <!-- Card 5 (Link & Image Polish) -->
-                                <div class="audit-card state-problem">
-                                    <div style="display: flex; justify-content: space-between; align-items: start; width: 100%;">
-                                        <div class="audit-card-num">05 / ACCESSIBILITY &amp; CLEANUP</div>
-                                        <span style="font-family: var(--font-mono); font-size: 8px; font-weight: 800; background: #2e7d32; color: white; padding: 2px 6px; border-radius: 4px; letter-spacing: 0.5px;">LOW PRIORITY</span>
-                                    </div>
-                                    <h3 class="audit-card-title">Link &amp; Image Polish</h3>
-                                    <div class="audit-card-content problem-text">
-                                        Some images/links need cleanup, leading to minor accessibility and user experience polish gaps.
-                                    </div>
-                                    <div class="audit-card-content solution-text" style="display: none; color: #2e7d32;">
-                                        Audit and repair broken internal redirect links, clean up navigation paths, and automate alt-attribute tagging for image assets.
-                                    </div>
-                                    <div class="card-toggle-tabs">
-                                        <button class="toggle-tab-btn active-problem" data-tab="problem">PROBLEM</button>
-                                        <button class="toggle-tab-btn" data-tab="solution">SOLUTION</button>
-                                    </div>
-                                </div>
+                            <!-- Main Audit Table (Right Column) -->
+                            <div style="background: #ffffff; border: 2px solid #e0e0e0; border-radius: 16px; padding: 20px; box-sizing: border-box; overflow-y: auto;">
+                                <table class="audit-table">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 24%;">Area &amp; Priority</th>
+                                            <th style="width: 38%;">The Technical Problem</th>
+                                            <th style="width: 38%;">Recommended Solution</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <strong style="display: block; font-size: 14.5px;">Structured Data</strong>
+                                                <span class="priority-badge priority-high">High Priority</span>
+                                            </td>
+                                            <td>Missing structured data (Schema) on products, organization, and FAQs, preventing Google &amp; AI engines from understanding the business entity.</td>
+                                            <td style="color: #2e7d32; font-weight: bold;">Inject rich JSON-LD Product, Organization, and FAQPage schemas to showcase products and store info directly in AI-powered search layouts.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong style="display: block; font-size: 14.5px;">Content Verification</strong>
+                                                <span class="priority-badge priority-high">High Priority</span>
+                                            </td>
+                                            <td>No author or date verification info on site content. Hardcoded temporal references (e.g. "2026") trigger content decay and trust warnings.</td>
+                                            <td style="color: #2e7d32; font-weight: bold;">Integrate verified author profiles, clear date timestamps, and dynamic content freshness scripts to keep product catalogs evergreen.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong style="display: block; font-size: 14.5px;">Web Performance</strong>
+                                                <span class="priority-badge priority-medium">Medium Priority</span>
+                                            </td>
+                                            <td>Large file sizes (heavy unoptimized media files) slow down page loads, dragging down Core Web Vitals speed indexes.</td>
+                                            <td style="color: #2e7d32; font-weight: bold;">Deploy automated next-gen image compression, lazy load assets, and optimize headless React bundle sizes to maximize ranking capability.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong style="display: block; font-size: 14.5px;">Crawler Indexing</strong>
+                                                <span class="priority-badge priority-medium">Medium Priority</span>
+                                            </td>
+                                            <td>Missing "AI discovery" files (like ai.txt or summary.json) on the web server, limiting indexing transparency.</td>
+                                            <td style="color: #2e7d32; font-weight: bold;">Deploy /.well-known/ai.txt, /ai/summary.json, /ai/faq.json, /ai/service.json, and link RSS/Atom feeds in &lt;head&gt;.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong style="display: block; font-size: 14.5px;">Accessibility</strong>
+                                                <span class="priority-badge priority-low">Low Priority</span>
+                                            </td>
+                                            <td>Some images/links need cleanup, leading to minor accessibility and user experience gaps.</td>
+                                            <td style="color: #2e7d32; font-weight: bold;">Audit and repair broken internal redirect links, clean up navigation paths, and automate alt-attribute tagging for image assets.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -4201,9 +4214,6 @@
 
                 // Slide 11 Audit Matrix Toggles
                 this.setupSlide11AuditMatrix();
-
-                // Slide 17 Audit Matrix Toggles
-                this.setupSlide17AuditMatrix();
             }
 
             setupSlide16CustomerJourney() {
@@ -4294,45 +4304,6 @@
 
             setupSlide11AuditMatrix() {
                 const cards = document.querySelectorAll('#auditCardsGrid .audit-card');
-                if (cards.length === 0) return;
-
-                const setCardState = (card, state) => {
-                    const probText = card.querySelector('.problem-text');
-                    const solText = card.querySelector('.solution-text');
-                    const probBtn = card.querySelector('[data-tab="problem"]');
-                    const solBtn = card.querySelector('[data-tab="solution"]');
-
-                    if (state === 'problem') {
-                        card.classList.add('state-problem');
-                        card.classList.remove('state-solution');
-                        if (probText) probText.style.display = 'block';
-                        if (solText) solText.style.display = 'none';
-                        if (probBtn) probBtn.classList.add('active-problem');
-                        if (solBtn) solBtn.classList.remove('active-solution');
-                    } else {
-                        card.classList.remove('state-problem');
-                        card.classList.add('state-solution');
-                        if (probText) probText.style.display = 'none';
-                        if (solText) solText.style.display = 'block';
-                        if (probBtn) probBtn.classList.remove('active-problem');
-                        if (solBtn) solBtn.classList.add('active-solution');
-                    }
-                };
-
-                cards.forEach(card => {
-                    const tabs = card.querySelectorAll('.toggle-tab-btn');
-                    tabs.forEach(tab => {
-                        tab.addEventListener('click', (e) => {
-                            e.stopPropagation();
-                            const target = tab.getAttribute('data-tab');
-                            setCardState(card, target);
-                        });
-                    });
-                });
-            }
-
-            setupSlide17AuditMatrix() {
-                const cards = document.querySelectorAll('#auditCardsGridD2C .audit-card');
                 if (cards.length === 0) return;
 
                 const setCardState = (card, state) => {
